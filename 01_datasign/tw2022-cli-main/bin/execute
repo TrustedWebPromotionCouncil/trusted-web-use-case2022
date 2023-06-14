@@ -1,0 +1,7 @@
+#!/bin/bash
+
+SELF_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+echo "$SELF_DIR"/../src/index.js
+#node --trace-warnings --experimental-specifier-resolution=node "$SELF_DIR"/../src/index.js "$@"
+node --experimental-specifier-resolution=node "$SELF_DIR"/../src/index.js "$@"
+#node "$SELF_DIR"/../src/index.js "$@"

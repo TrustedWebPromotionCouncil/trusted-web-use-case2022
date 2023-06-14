@@ -1,0 +1,30 @@
+@import "../../index";
+
+.no-log {
+  display: flex;
+  justify-content: center;
+  @extend .text-styles-headline;
+}
+
+.providing-log {
+  .log {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+  }
+  .log-caption {
+    @extend .text-styles-caption;
+    margin-right: 8px;
+    width: 56px;
+  }
+
+  .log-value {
+    display: flex;
+    justify-content: space-between;
+    @extend .text-styles-body1;
+    max-width: 244px;
+    width: 100%;
+    .mail-address {}
+  }
+}
+

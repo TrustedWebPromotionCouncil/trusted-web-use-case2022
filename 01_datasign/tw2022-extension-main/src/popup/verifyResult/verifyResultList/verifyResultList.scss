@@ -1,0 +1,28 @@
+@import "../../../index";
+
+.group-item-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.verified-result-list {
+  .log {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+    padding: 4px 0;
+  }
+  .log-caption {
+    @extend .text-styles-caption;
+    margin-right: 8px;
+    width: 80px;
+  }
+
+  .log-value {
+    @extend .text-styles-body2;
+    .url {
+      display: inline-block;
+      max-width: 160px;
+    }
+  }
+}

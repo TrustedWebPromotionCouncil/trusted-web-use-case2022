@@ -1,0 +1,15 @@
+query GetDocument($documentId: String!) {
+    document(documentId: $documentId) {
+        id
+        did
+        vc
+        location
+        username
+        serialNumber
+        scanedAt
+        filename
+        mimeType
+        data
+        createdAt
+    }
+}

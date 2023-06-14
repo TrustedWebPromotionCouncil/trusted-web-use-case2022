@@ -1,0 +1,21 @@
+@import "../../../index.scss";
+
+.top-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 16px 8px;
+  background-color: #808080;
+}
+.title {
+  padding: 8px 0;
+  text-align: left;
+  @extend .text-styles-header;
+}
+.logo-icon-welcome {
+  width: 48px;
+  height: 48px;
+}

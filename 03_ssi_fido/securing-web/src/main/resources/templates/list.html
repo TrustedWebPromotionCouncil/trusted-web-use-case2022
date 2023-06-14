@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>ユーザー情報一覧</title>
+<meta charset="utf-8" />
+</head>
+<body>
+    <h1>ユーザー情報一覧</h1>
+    <div>
+        <a th:href="@{/add}">新規登録はこちら</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>名前</th>
+                <th>パスワード</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${userlist}" th:object="${user}">
+                <td th:text="*{userName}"></td>
+                <td th:text="*{password}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

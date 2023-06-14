@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* メニュー画面 */
+.menu-step {
+  @apply absolute top-0 left-0 w-[53px] h-[53px] rounded-full bg-color-key text-color-white text-center text-menu-step-text font-sans font-bold z-10;
+}
+
+.menu-button {
+  @apply block text-menu-button-text text-center py-4 px-0 w-full border border-solid border-color-menu-button rounded-lg font-sans z-0;
+}
+
+.menu-triangle {
+  @apply block mt-[18px] mx-auto mb-[-10px] w-0 h-0 border-solid border-t-[26px] border-r-[33.5px] border-b-0 border-l-[33.5px] border-t-color-triangle-border-top border-x-color-triangle-border border-b-color-triangle-border;
+}
+
+/* 入力フォームパーツ */
+.input-form-label {
+  @apply block text-input-form-label w-full mb-4 font-sans;
+}
+
+.input-form-label-required {
+  @apply text-color-required font-sans;
+}
+
+.input-form-text-box {
+  @apply py-2 px-2.5 border border-solid border-color-input-text-line rounded-lg bg-color-background w-full mb-[21px] text-input-form-text font-sans;
+}
+
+.input-form-text-box-half {
+  @apply py-2 px-2.5 border border-solid border-color-input-text-line rounded-lg bg-color-background w-2/4 mb-[21px] text-input-form-text font-sans;
+}
+
+.input-form-text-box-confirm {
+  @apply leading-none py-2 px-2.5 min-h-[40px] border border-solid border-color-confirm rounded-lg bg-color-confirm w-full mb-[21px] text-input-form-text font-sans;
+}
+
+.input-form-text-box-confirm-half {
+  @apply leading-none py-2 px-2.5 min-h-[40px] border border-solid border-color-confirm rounded-lg bg-color-confirm w-2/4 mb-[21px] text-input-form-text font-sans;
+}
+
+.input-form-button-white {
+  @apply inline-block text-center py-4 px-7 rounded-lg border border-solid border-color-gray text-button-text font-bold font-sans;
+}
+
+.input-form-button-red {
+  @apply inline-block text-center py-4 px-3 rounded-lg border border-solid border-color-required bg-color-required text-color-white text-button-text font-bold font-sans;
+}
+
+.input-form-button-green {
+  @apply inline-block text-center py-4 px-7 rounded-lg border border-solid border-color-green bg-color-green text-color-white text-button-text font-bold font-sans;
+}
+
+.input-form-button-orange {
+  @apply inline-block text-center py-4 px-7 rounded-lg border border-solid border-color-subsidy-main bg-color-subsidy-main text-color-white text-button-text font-bold font-sans;
+}
+
+.input-form-button-gray {
+  @apply inline-block text-center py-4 px-7 rounded-lg border-solid bg-white text-black border border-color-gray text-button-text font-bold font-sans;
+}
+
+.input-form-button-blue {
+  @apply inline-block text-center py-4 px-7 rounded-lg border border-solid border-color-blue bg-color-blue text-color-white text-button-text font-bold font-sans;
+}
+
+.input-form-button-small {
+  @apply inline-block text-center py-2 px-4 rounded-lg border border-solid border-color-gray text-button-text font-bold font-sans;
+}
+
+.input-form-select-year {
+  @apply py-2 px-2.5 border border-solid border-color-input-text-line rounded-lg bg-color-background w-2/5 mb-[21px] mr-2 text-input-form-text font-sans;
+}
+
+.input-form-select-month {
+  @apply py-2 px-2.5 border border-solid border-color-input-text-line rounded-lg bg-color-background w-2/5 mb-[21px] text-input-form-text font-sans;
+}
+
+.input-form-button-white-done {
+  @apply inline-block text-center py-3 px-2 rounded-lg border border-solid border-color-gray text-button-done-text font-bold font-sans;
+}
+
+.input-form-button-green-done {
+  @apply inline-block text-center py-3 px-2 rounded-lg border border-solid border-color-green bg-color-green text-color-white text-button-done-text font-bold font-sans;
+}
+
+.input-form-button-gray-done {
+  @apply inline-block text-center py-3 px-2 rounded-lg border border-solid border-color-menu-button bg-color-menu-button text-color-white text-button-text font-bold font-sans;
+}
+
+/* --------------------------------------------- */
+/* ステップ(入力->確認->完了) */
+.step {
+  padding: 25px 57px 54px;
+}
+
+ul.step-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+ul.step-list::before {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: calc(100% - 1em);
+  left: 0.5em;
+  bottom: 7px;
+  border-bottom: 1px dotted #dcdcdc;
+  z-index: 0;
+}
+
+ul.step-list li {
+  font-size: 11px;
+  font-weight: bold;
+  color: #cfcfcf;
+  position: relative;
+  z-index: 1;
+}
+
+ul.step-list li::after {
+  display: block;
+  content: '';
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid #cfcfcf;
+  background-color: #dcdcdc;
+  margin: 0.5em auto 0;
+  position: relative;
+  z-index: 1;
+}
+
+ul.step-list li.active {
+  color: #84A5E4;
+}
+
+ul.step-list li.active::after {
+  border-color: #84A5E4;
+  background-color: #84A5E4;
+}
+
+ul.step-list li.active+li::after,
+ul.step-list li.active+li+li::after {
+  background-color: #fff;
+}
+
+ul.step-list li:not(:first-child).active::before {
+  content: '';
+  position: absolute;
+  bottom: 7px;
+  right: 1em;
+  width: calc(50vw - 57px - 1.5em);
+  height: 1px;
+  background-color: #cfcfcf;
+  z-index: 0;
+}
+
+ul.step-list li:last-child.active::before {
+  width: calc(100vw - 57px - 57px - 1.5em);
+}
+
+ul.step-list li:nth-child(1) {
+  z-index: 3;
+}
+
+ul.step-list li:nth-child(2) {
+  z-index: 2;
+}
+
+ul.step-list li:nth-child(3) {
+  z-index: 1;
+}
+
+/* --------------------------------------------- */
+
+/* --------------------------------------------- */
+/* 固定ヘッダー */
+header.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+/* --------------------------------------------- */
+
+/* --------------------------------------------- */
+/* 一覧(検索エリア) */
+.main-search {
+  padding: 24px 17px 20px;
+  font-size: 13px;
+  color: #868686;
+  display: flex;
+}
+
+.main-search svg {
+  display: inline-block;
+  vertical-align: middle;
+  width: 19px;
+  margin-right: 12px;
+}
+
+.main-search input {
+  border: none;
+  width: calc(100% - 19px);
+  margin: 0;
+}
+
+/* --------------------------------------------- */
+
+/* --------------------------------------------- */
+/* 一覧(テーブル) */
+table.searce-list {
+  width: 100%;
+}
+
+table.searce-list tr {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+table.searce-list td {
+  font-size: 14px;
+  vertical-align: middle;
+  padding: 1.5em 0.25em;
+}
+
+table.searce-list td:first-child {
+  padding-left: 1.25em;
+}
+
+table.searce-list td:last-child {
+  padding-right: 1.25em;
+}
+
+/* --------------------------------------------- */

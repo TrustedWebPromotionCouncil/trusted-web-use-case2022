@@ -1,0 +1,11 @@
+@import "../../../index.scss";
+
+.master-did {
+  display: flex;
+  //justify-content: center;
+  flex-direction: column;
+  padding: 16px;
+  background-color: #FFFFFF;
+  overflow-wrap: break-word;
+  @extend .text-styles-body4;
+}

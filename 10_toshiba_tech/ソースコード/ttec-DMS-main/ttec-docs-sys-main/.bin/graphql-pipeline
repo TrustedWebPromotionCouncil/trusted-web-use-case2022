@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -ue
+
+CURR_DIR="${PWD}"
+HOME_DIR="$( basename "$( dirname ${0} )" )"
+ROOT_DIR="${CURR_DIR}/${HOME_DIR}/.."
+
+(
+    # スキーマ・マージ
+    yarn graphql:merge
+
+    # スキーマ・フォーマット
+    yarn graphql:format
+
+    # スキーマ・リント
+    yarn graphql:lint
+
+    # スキーマ・ジェネレート
+    yarn graphql:codegen
+) 2>&1

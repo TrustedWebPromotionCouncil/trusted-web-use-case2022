@@ -1,0 +1,31 @@
+query DIDGenerateVC($message: String!) {
+    didGenerateVC(message: $message)
+}
+
+query DIDVerifyVC($message: String!) {
+    didVerifyVC(message: $message)
+}
+
+query DIDCommGeneratePlaintextMessage($destinations: [String!]!, $message: String!) {
+    didcommGeneratePlaintextMessage(destinations: $destinations, message: $message)
+}
+
+query DIDCommVerifyPlaintextMessage($message: String!) {
+    didcommVerifyPlaintextMessage(message: $message)
+}
+
+query DIDCommGenerateSignedMessage($destinations: [String!]!, $message: String!) {
+    didcommGenerateSignedMessage(destinations: $destinations, message: $message)
+}
+
+query DIDCommVerifySignedMessage($message: String!) {
+    didcommVerifySignedMessage(message: $message)
+}
+
+query DIDCommGenerateEncryptedMessage($destinations: [String!]!, $message: String!) {
+    didcommGenerateEncryptedMessage(destinations: $destinations, message: $message)
+}
+
+query DIDCommVerifyEncryptedMessage($message: String!) {
+    didcommVerifyEncryptedMessage(message: $message)
+}

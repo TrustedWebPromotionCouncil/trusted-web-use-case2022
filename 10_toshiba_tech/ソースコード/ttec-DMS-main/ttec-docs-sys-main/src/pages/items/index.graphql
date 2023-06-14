@@ -1,0 +1,12 @@
+mutation RemoveDocument ($documentId: String!) {
+    removeDocument(documentId: $documentId)
+}
+
+query GetDocuments {
+    documents {
+        id
+        location
+        filename
+        scanedAt
+    }
+}

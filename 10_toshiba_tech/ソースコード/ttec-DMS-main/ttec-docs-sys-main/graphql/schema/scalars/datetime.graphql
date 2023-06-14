@@ -1,0 +1,2 @@
+"""日付型 (文字列)"""
+scalar DateTime

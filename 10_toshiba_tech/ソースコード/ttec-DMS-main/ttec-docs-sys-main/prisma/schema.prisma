@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  // レコード ID
+  id        String   @id @default(cuid())
+  // レコード作成日時
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  // レコード更新日時
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz()
+
+  // メールアドレス
+  email    String  @unique @map("email")
+  // パスワード
+  password String? @map("password") /// @encrypted
+
+  @@map("users")
+}
+
+model Document {
+  // レコード ID
+  id        String   @id @default(cuid())
+  // レコード作成日時
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
+  // レコード更新日時
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz()
+
+  // DID
+  did          String   @map("did")
+  // スキャンデータ (VC)
+  vc           String   @map("vc")
+  // スキャン日時
+  scanedAt     DateTime @map("scaned_at") @db.Timestamptz()
+  // ファイル名
+  filename     String   @map("filename")
+  // ファイルフォーマット (MIME タイプ)
+  mimeType     String   @map("mime_type")
+  // PDF ファイル
+  data         String   @map("data")
+  // メタデータ: 設置場所
+  location     String?  @map("location")
+  // メタデータ: ユーザー名 (ID)
+  username     String?  @map("username")
+  // メタデータ: シリアル番号
+  serialNumber String?  @map("serial_number")
+
+  @@map("documents")
+}

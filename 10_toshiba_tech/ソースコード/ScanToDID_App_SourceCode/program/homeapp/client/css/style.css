@@ -1,0 +1,314 @@
+/* Copyright(c) 2015-2018 Toshiba Tec Corporation, All Rights Reserved. */
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body,
+button {
+  margin: 0;
+  font-size: 3.75vh;
+  color: white;
+  -webkit-user-select: none;
+  cursor: default;
+  background-color: #34353a;
+}
+
+html,
+body,
+input,
+button {
+  font-family: "Migu 1C", Meiryo, sans-serif;
+}
+
+html:lang(zh-CN),
+body:lang(zh-CN),
+input:lang(zh-CN),
+button:lang(zh-CN) {
+  font-family: "Source Han Sans SC", Meiryo, sans-serif;
+}
+
+html:lang(zh-TW),
+body:lang(zh-TW),
+input:lang(zh-TW),
+button:lang(zh-TW) {
+  font-family: "Source Han Sans TC", Meiryo, sans-serif;
+}
+
+html:lang(ar),
+body:lang(ar),
+input:lang(ar),
+button:lang(ar) {
+  font-family: "DejaVu Sans", Meiryo, sans-serif;
+}
+
+.selected,
+.active {
+  background: #6e25fe !important;
+}
+
+.disabled {
+  color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
+  cursor: default;
+  pointer-events: none;
+}
+
+.hide {
+  display: none !important;
+}
+
+.app-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(#62656d), to(#575965));
+  position: relative;
+  border-color: rgba(255, 255, 255, 0.1);
+  border-style: solid;
+  border-width: 2px;
+  margin-left: 1vw;
+  display: block;
+  border-radius: 2px;
+  font-size: 3.75vh;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 15vw;
+  height: 7.5vh;
+  cursor: pointer;
+}
+
+.app-button:active {
+  background: -webkit-gradient(linear, left top, left bottom, from(#5a5d66), to(#4f515f));
+  border-color: #636570;
+  color: rgba(255, 255, 255, 0.4);
+  padding-top: 0.21vh;
+  padding-bottom: 0;
+}
+
+.app-button.selected {
+  background: -webkit-gradient(linear, left top, left bottom, from(#742ffe), to(#671bff));
+  border-color: #7c3afe;
+}
+
+.app-button.disabled {
+  background: none;
+  color: rgba(255, 255, 255, 0.2);
+  border-color: #525156;
+  cursor: default;
+  pointer-events: none;
+}
+
+.app-button.disabled.selected {
+  background: #6e25fe;
+}
+
+.app-button.small {
+  width: 12.38vw;
+}
+
+.app-button.extralarge {
+  width: 31.3vw;
+  height: 8.33vh;
+}
+
+.app-button.large {
+  width: 23.75vw;
+  height: 9.56vh;
+}
+
+.app-button.mediumplus {
+  width: 18.75vw;
+  height: 9.58vh;
+}
+
+.button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  position: absolute;
+  bottom: 0vh;
+  width: 100%;
+  height: 10.31vh;
+}
+
+.button-container-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: flex-start;
+  position: relative;
+  width: 40%;
+  height: 100%;
+  padding-left: 2vw;
+}
+
+.button-container-left>.button {
+  margin-right: 1vw;
+}
+
+.button-container-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: flex-end;
+  position: relative;
+  width: 60%;
+  height: 100%;
+  padding-right: 4vw;
+}
+
+.button-container-right>.button {
+  margin-left: 1vw;
+}
+
+.scan-job-result-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  background-color: #34353a;
+  position: absolute;
+  bottom: 10.31vh;
+  top: 8.33vh;
+  width: 100%;
+  font-size: 3.5vh;
+}
+
+.did_container {
+  position: relative;
+  top: 25vh;
+  padding-left: 5vw;
+  width: 90vw;
+  font-size: 4.0vh;
+}
+
+.source_did_container {
+  float: left;
+}
+
+.source_did_text_container {
+  width: 68vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.did_input {
+  display: inline-block;
+  width: 68vw;
+  color: white;
+  background: #6c24fc;
+  font-size: 4.0vh;
+}
+
+#sending_screen_gif {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: #34353a;
+  background-image: url('../images/Loading_Screen.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-user-select: none;
+}
+
+.app-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-flex;
+  -webkit-align-items: left;
+  -webkit-justify-content: center;
+  position: relative;
+  background-color: #494a51;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  font-size: 4.58vh;
+  height: 8.33vh;
+  width: 100%;
+  padding-left: 0 1.25vw;
+  margin: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+/*# sourceMappingURL=style.css.map */

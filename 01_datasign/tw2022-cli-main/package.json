@@ -1,0 +1,28 @@
+{
+  "name": "commander",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint  --ext .js --config .eslintrc.cjs",
+    "lint:prettier": "prettier  \\\\\\\"!test*\\\\\\\" --check",
+    "fix": "yarn fix:eslint && yarn fix:prettier",
+    "fix:eslint": "yarn lint --fix",
+    "fix:prettier": "yarn lint:prettier --write"
+  },
+  "dependencies": {
+    "@decentralized-identity/ion-tools": "^1.0.5",
+    "@tbd54566975/dwn-sdk-js": "0.0.12",
+    "base64url": "^3.0.1",
+    "commander": "^10.0.0",
+    "cross-fetch": "^3.1.5",
+    "did-jwt-vc": "^3.1.1",
+    "jsonschema": "^1.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "prettier": "^2.8.4"
+  }
+}

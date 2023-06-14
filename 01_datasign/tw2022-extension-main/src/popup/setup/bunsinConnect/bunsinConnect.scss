@@ -1,0 +1,29 @@
+@import "../../../index.scss";
+
+.email {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 16px 0;
+  gap: 16px;
+}
+.bunsin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.bunsin-description {
+  display: flex;
+  justify-content: center;
+  margin: 8px 40px;
+  @extend .text-styles-body5;
+}
+.bunsin-icon {
+  width: 24px;
+  height: 24px;
+}
+.bunsin-title {
+  width: 64px;
+  height: 16px;
+}

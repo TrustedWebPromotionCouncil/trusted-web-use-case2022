@@ -1,0 +1,31 @@
+END USER SOFTWARE LICENSE AGREEMENT
+
+INSTALLING OR USING THIS SOFTWARE PRODUCT CONSTITUTES YOUR ACCEPTANCE OF THE FOLLOWING TERMS AND CONDITIONS. IF YOU DO NOT ACCEPT THESE TERMS, YOU MAY NOT INSTALL OR USE THIS SOFTWARE, AND YOU MUST PROMPTLY UNINSTALL THE SOFTWARE OR RETURN THE SOFTWARE TO THE LOCATION WHERE YOU OBTAINED IT.
+
+GRANT OF LICENSE:
+This is a legal agreement between you, the end-user (either an individual or an entity, "You"), and TOSHIBA TEC Corporation ("TTEC")(Unless otherwise separately agreed between you and TTEC or its suppliers.). This software, fonts (including their typefaces) and related documentation (Collectively, "Software") is licensed under terms and conditions in this License Agreement. You may use Software installed on a supported TTEC MFP in accordance with the terms and conditions contained in this License Agreement.  The copyright and any other intellectual property rights, title and ownership of Software is proprietary and belonging to TTEC and/or its suppliers. TTEC disclaim responsibility for the installation and/or use of Software, and for the results obtained by using Software. You may use one copy of Software as installed on a supported TTEC MFP, and may not copy Software for any reason except as necessary to use Software on a supported TTEC MFP. Any copies of Software shall be subject to the terms and conditions of this License Agreement. You may not, nor cause or permit any third party to, modify, adapt, merge, translate, reverse compile, reverse assemble, or reverse engineer Software. You may use Software, only in accordance with this License Agreement. The title and intellectual property rights in and to Software will remain the exclusive property of TOSHIBA TEC and/or its suppliers, and You will not acquire any rights to Software, except the license expressly set forth herein. You may not use, have access to source code of Software. You may not perform modification, deletion, or any act to the copyright notice of Software (including its copies).You will be held legally responsible for any copyright infringement, unauthorized transfer, reproduction or use of Software.
+
+TERM AND TERMINATION:
+This License Agreement is effective until terminated by TTEC at its discretion or upon your failure to comply with any term of this License Agreement. Upon termination, You agree to uninstall, return or destroy Software including all copies of Software. In addition to the above, You may terminate this License Agreement at any time by uninstalling, returning or destroying Software and all copies.
+
+DISCLAIMER:
+Software is provided "AS IS" without warranty of any kind, either express or implied, including, but not limited to, the  warranties of merchantability, fitness for a particular purpose, title, and non-infringement. TTEC disclaims any warranty relating to the quality and performance of Software. If Software proves defective, You (and not TTEC) shall be responsible for the entire cost of all necessary repair, modification, or servicing. TTEC does not warrant that the functions contained in Software will meet your requirements or that the operation of Software will be uninterrupted or error free or that Software will have no defects.
+
+UPDATE AND DISCONTINUE
+TTEC may update, upgrade and discontinue Software without any restriction.
+
+THIRD PARTY SOFTWARE
+There are cases in which third party software is contained in Software (including future updated and upgraded versions). Such third party software is provided to You on different terms and conditions from those of this License Agreement. The use of such third party software is subject to agreements or readme files (or files similar to readme files) provided separately from this License Agreement ("Separate Agreements, etc."). When You use the third party software, You must comply with the terms and conditions of the third party software stated in the Separate Agreements, etc.
+
+LIMITATION OF LIABILITY:
+IN NO EVENT WILL TTEC BE LIABLE TO YOU NOR ANY THIRD PARTY FOR ANY DAMAGES, WHETHER IN CONTRACT, TORT, OR OTHERWISE (EXCEPT PERSONAL INJURY OR DEATH RESULTING FROM GROSS NEGLIGENCE OF TTEC), INCLUDING WITHOUT LIMITATION ANY LOST PROFITS, LOST DATA, LOST SAVINGS OR OTHER INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE SOFTWARE, EVEN IF TTEC OR ITS SUPPLIERS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+U.S. GOVERNMENT RESTRICTED RIGHTS:
+The Software is provided with RESTRICTED RIGHTS. Use, duplication or disclosure by the U.S. Government is subject to restrictions set forth in subdivision (b)(3)(ii) or (c)(1)(ii) of the Rights in Technical Data and Computer Software Clause set forth in DFARS 252.227-7013, or DFARS 52.227-19 (c)(2), as appropriate.
+
+GENERAL:
+You may not sublicense, lease, rent, assign or transfer this license or Software. Any attempt to sublicense, lease, rent, assign or transfer any of the rights, duties or obligations hereunder shall be null and void. You agree that you do not intend to, and will not ship, transmit, export or re-export (directly or indirectly) Software, including any copies of Software, or any technical information contained in Software or its media, or any direct product thereof, to any country or destination prohibited by government  of Japan, the United States and the relevant country. This license shall be governed by the laws of Japan or, at the election of a Supplier of TTEC concerned with a dispute arising from or relating to this Agreement, the laws of the Country designated from time to time by the relevant Supplier of TTEC. If any provision or portion of this License Agreement shall be found to be illegal, invalid or unenforceable, the remaining provisions or portions shall remain in full force and effect.
+
+YOU ACKNOWLEDGE THAT YOU HAVE READ THIS LICENSE AGREEMENT AND THAT YOU UNDERSTAND ITS PROVISIONS. YOU AGREE TO BE BOUND BY ITS TERMS AND CONDITIONS. YOU FURTHER AGREE THAT THIS LICENSE AGREEMENT CONSTITUTES THE ENTIRE AGREEMENT BETWEEN YOU AND TTEC AND ITS SUPPLIERS AND SUPERSEDES ANY PROPOSAL OR PRIOR AGREEMENT, ORAL OR WRITTEN, OR ANY OTHER COMMUNICATION RELATING TO THE SUBJECT MATTER OF THIS LICENSE AGREEMENT.
+
+Contractor/Manufacturer is TOSHIBA TEC Corporation, 1-11-1, Osaki, Shinagawa-ku, Tokyo, 141-8562, Japan

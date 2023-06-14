@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>ユーザー新規登録</title>
+<meta charset="utf-8" />
+</head>
+<body>
+    <h1>ユーザー新規登録</h1>
+    <form th:action="@{/create}" th:object="${userRequest}" method="post">
+    <div style="color:red;" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+    <div th:if="${userid == null}">
+        <table>
+            <tr>
+                <th class="align-middle">ユーザーID</th>
+                <td><input type="text" th:value="${userid}" id="name" name="name" disabled></td>
+            </tr>
+            <tr>
+                <th class="align-middle">パスワード</th>
+                <td><input type="password" th:field="*{password}"disabled></td>
+            </tr>
+        </table>
+        <div>
+            <input type="submit" value="登録" class="btn" id="register" name="register" disabled>
+        </div>
+    </div>
+    <div th:if="${userid != null}">
+        <table>
+            <tr>
+                <th class="align-middle">ユーザーID</th>
+                <td><input type="text" th:value="${userid}" id="name" name="name" ></td>
+            </tr>
+            <tr>
+                <th class="align-middle">パスワード</th>
+                <td><input type="password" th:field="*{password}"></td>
+            </tr>
+        </table>
+        <div>
+            <input type="submit" value="登録" class="btn" id="register" name="register" >
+        </div>
+    </div>
+    </form>
+</body>
+</html>

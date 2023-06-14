@@ -1,0 +1,11 @@
+@import "../../../index.scss";
+
+.phrase-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 16px;
+  background-color: #FFFFFF;
+  flex-wrap: wrap;
+  @extend .text-styles-body4;
+}

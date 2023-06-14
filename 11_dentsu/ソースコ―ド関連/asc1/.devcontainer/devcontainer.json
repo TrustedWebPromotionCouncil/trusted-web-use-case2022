@@ -1,0 +1,88 @@
+{
+  "name": "algo-asc1",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/app",
+  // "build": {
+  //   "dockerComposeFile": ["../docker-compose.yml"]
+  //   // "dockerfile": "../Dockerfile",
+  //   // "args": { "VARIANT": "3.10-bullseye" }
+  // 	},
+  // The optional 'workspaceFolder' property is the path VS Code should open by default when
+  // connected. This is typically a file mount in .devcontainer/docker-compose.yml
+  // "workspaceFolder": "/home/algo/workspace",
+  // Set *default* container specific settings.json values on container create.
+  "settings": {
+    // "python.defaultInterpreterPath": "/app/local/bin/python",
+  //   "python.languageServer": "Pylance",
+  //   "python.linting.enabled": true,
+  //   "python.linting.pylintEnabled": false,
+  //   "python.linting.flake8Enabled": false,
+  //   "python.linting.mypyEnabled": true,
+  //   "python.formatting.provider": "black",
+  //   "python.linting.lintOnSave": true,
+  //   "editor.formatOnSave": true,
+  //   "python.autoComplete.addBrackets": false,
+  //   "python.analysis.typeCheckingMode": "strict",
+  //   "python.analysis.diagnosticMode": "workspace",
+  //   "python.analysis.diagnosticSeverityOverrides": {
+  //     "reportMissingTypeStubs": "none",
+  //     "reportUnknownVariableType": "none",
+  //     "reportUnknownMemberType": "none",
+  //     "reportGeneralTypeIssues": "none"
+  //     // "reportUnusedImport": "warning",
+  //     // "reportUnusedVariable": "warning",
+  //     // "reportUnusedClass": "warning",
+  //     // "reportDuplicateImport": "warning",
+  //     // "reportMissingParameterType": "warning",
+  //     // "reportPrivateUsage": "warning",
+  //     // "reportPropertyTypeMismatch": "warning",
+  //     // "reportUnboundVariable": "warning",
+  //     // "reportUnusedExpression": "warning"
+  //   },
+  //   // "editor.codeActionsOnSave": {
+  //   //     "source.organizeImports": true
+  //   // },
+  //   // "python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
+  //   // "python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+  //   // "python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+  //   // "python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
+  //   // "python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
+  //   // "python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
+  //   // "python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
+  //   // "python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
+  //   // "python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
+  //   // "python.linting.flake8Args": [
+  //   //   "--max-line-length=E501"
+  //   //   // "--extend-select=E,F"
+  //   // ],
+  //   "python.linting.mypyArgs": [
+  //     "--show-error-codes",
+  //     "--strict",
+  //     "--ignore-missing-imports"
+  //     //"--disable-error-code no-any-return"
+  //   ],
+  //   "[python]": {
+  //     "editor.tabSize": 4,
+  //     "editor.formatOnPaste": false
+  //   }
+  },
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "ms-python.python",
+    "ms-python.vscode-pylance"
+  ],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  // "runArgs": ["--network=host"],
+  // Uncomment the next line if you want start specific services in your Docker Compose config.
+  // "runServices": [],
+  // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
+  // "shutdownAction": "none",
+  // Uncomment the next line to run commands after the container is created - for example installing curl.
+  // "postCreateCommand": "sudo chown -R algo /app",
+  // Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "vscode"
+}

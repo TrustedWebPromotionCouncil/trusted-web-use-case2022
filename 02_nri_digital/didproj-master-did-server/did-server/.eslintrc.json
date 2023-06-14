@@ -1,0 +1,41 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-base",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["import", "@typescript-eslint"],
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "ts": "never"
+      }
+    ],
+    "spaced-comment": ["error", "always", { "markers": ["/ <reference"] }],
+    "global-require": "off",
+    "no-restricted-syntax": "off",
+    "no-param-reassign": "off",
+    "no-case-declarations": "off",
+    "no-irregular-whitespace": "off",
+    "no-unused-vars": "off", // warnからoffに変更し、↓でtypescript用のno-unused-varsを追加
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
+    "arrow-body-style": 2
+  }
+}

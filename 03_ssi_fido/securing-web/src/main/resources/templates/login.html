@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <title>Spring Security Example </title>
+</head>
+
+<body>
+    <div>
+        <div th:if="${userid == ''}"><label> User Name : <input type="text" name="username" maxlength="10" th:value="${userid}" /> </label></div>
+        <div th:if="${userid != ''}"><label> User Name : <input type="text" name="username" maxlength="10" th:value="${userid}" disabled /> </label></div>
+        <div>
+            FIDO2ログイン登録<br>
+            セキュリティキー(認証器)の種類を選択してください
+        </div>
+        <div>
+            <div>
+                <input type="radio" name="attachment" id="attachmentPlatform" value="platform" checked>
+                <label for="attachmentPlatform">
+                    タッチID などの いわゆる プラットフォーム認証器
+                </label>
+            </div>
+            <div>
+                <input type="radio" name="attachment" id="attachmentCrossPlatform" value="cross-platform">
+                <label for="attachmentCrossPlatform">
+                    Yubikey などの いわゆる クロスプラットフォーム認証器
+                </label>
+            </div>
+        </div>
+    </div>
+    <button href="#" type="button" id="register">Register</button>
+    <div id="status">
+        ...
+    </div>
+    <div>
+        <p style="text-align: left;">FIDO2 Authenticate</p>
+        <form name="authenticate" th:action="@{/login-redirect}" method="post">
+            <p hidden>
+                <input type="text" id="name" name="name" maxlength="10" th:value="${userid}">
+                <input type="password" id="password" name="password" maxlength="10" th:value="${password}">
+                <input type="text" id="assertion" name="assertion">
+                <input type="hidden" id="redirectURL" name="redirectURL" th:value="${redirectURL}">
+            </p>
+        </form>
+        <div>
+            <button href="#" type="button" id="fido">Login</button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous">
+	</script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <hr>
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+    <form name="pwAuthenticate" th:object="${userRequest}" method="post">
+    	<div style="color:red;" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+        <input type="hidden" id="redirectURL" name="redirectURL" th:value="${redirectURL}">
+        <div><label> User Name : <input type="text" id="name" name="name"  maxlength="10" th:value="${userid}" /> </label></div>
+        <div><label> Password: <input type="password" id="password" maxlength="10" name="password" /> </label></div>
+        <div><button href="#" type="button" id="pwRegister">Register</button></div>
+        <div><button href="#" type="button" id="login">Login</button></div>
+    </form>
+</body>
+
+</html>

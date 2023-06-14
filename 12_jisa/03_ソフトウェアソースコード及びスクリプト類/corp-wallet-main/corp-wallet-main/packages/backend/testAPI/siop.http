@@ -1,0 +1,18 @@
+###
+POST http://localhost:8080/api/siopRequest HTTP/1.1
+content-type: application/json
+
+{ "options": {"vc": "jwt vc"} }
+
+###
+POST http://localhost:8080/api/siopV2Request HTTP/1.1
+content-type: application/json
+
+{ "options": {"vc": "jwt vc"} }
+
+
+###
+POST http://localhost:8080/api/vpRequest HTTP/1.1
+content-type: application/json
+
+{ "options": {"vc": "jwt vc"} }

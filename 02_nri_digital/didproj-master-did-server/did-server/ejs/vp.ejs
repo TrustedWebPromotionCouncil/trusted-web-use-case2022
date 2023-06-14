@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include('./partials/head', {title: 'VP提示'}); %>
+</head>
+<body>
+<div class="kk-sidenav-container" theme="panel">
+<%- include('./partials/menu', {}); %>
+
+<%# コンテンツは下記divの中に記載 %>
+<div class="kk-sidenav-main kk-padding-s">
+  <div class="kk-container kk-padding-s" size-s left>
+    <div class="didp-title kk-margin-right">VP提示</div>
+
+    <p class="kk-margin-top-l">
+      <span class="kk-font-bold"><%= presentation.name %></span> を提示する為には下記URLをクリックするか、QRを読み取ってください。
+    </p>
+    <div grid-col>
+      <div class="kk-col5@s kk-col12" cell>
+        <img src="<%= qr %>">
+      </div>
+      <div class="kk-col7@s kk-col12" style="word-break: break-all;" cell>
+        <div class="kk-card">
+          <a href="<%= siopUrl %>" target="_blank">
+            <%= siopUrl %>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div id="received_vp" class="kk-margin-top" hidden>
+      VPが提示されました。
+      <textarea id="vp" class="kk-textarea didp-code kk-margin-top-s" rows="12" readonly></textarea>
+    </div>
+
+  </div>
+</div>
+
+<script src="/resources/js/socket.io.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const socket = io({
+      query: {
+        tokenId: '<%= vp.id %>'
+      }
+    });
+    socket.on('received_vp', (param) => {
+      console.log('received_vp', param);
+      document.getElementById('vp').textContent = JSON.stringify(param, null, 2);
+      document.getElementById('received_vp').removeAttribute('hidden');
+    });
+  });
+</script>
+
+</body>
+</html>

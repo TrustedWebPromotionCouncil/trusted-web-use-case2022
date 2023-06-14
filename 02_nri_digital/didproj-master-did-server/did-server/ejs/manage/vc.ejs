@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include('../partials/head', {title: 'VC管理'}); %>
+</head>
+<body>
+<div class="kk-sidenav-container" theme="panel">
+<%- include('../partials/menu', {}); %>
+
+<%# コンテンツは下記divの中に記載 %>
+<div class="kk-sidenav-main kk-padding-s">
+  <div class="kk-container kk-padding-s" size-s left>
+    <div class="didp-title kk-margin-right">発行されたVC一覧 - <%= credential.name %></div>
+
+    <div class="kk-margin-top kk-margin-bottom">
+      ※最新50件のみ
+    </div>
+
+    <%
+      for (const vc of credential.verifiableCredentialList) {
+        const credentialSubject = JSON.parse(vc.credentialSubjectJson)
+        let status = 'Active'
+        if (vc.verifiableCredentialStatusList.length) {
+          status = vc.verifiableCredentialStatusList[0].status
+        }
+        let statusColor = 'dodgerblue'
+        switch (status) {
+          case 'Revoked':
+            statusColor = 'tomato'
+            break
+          case 'Suspended':
+            statusColor = 'seagreen'
+            break
+        }
+    %>
+    <div id="<%= vc.id %>" class="kk-card kk-shadow" style="margin-top: 1px;" size-s>
+      <div class="kk-accordion kk-margin-top-ss kk-iflex" theme="icon" closed>
+        <span class="kk-font-bold" style="width: 340px;"><%= vc.id %></span>
+        <span class="kk-font-size-s" style="width: 170px;">(<%= func.formatDayjs(vc.createdAt) %>)</span>
+        <span class="kk-label kk-margin-left-s" size-s style="background-color: <%= statusColor %>;"><%= status %></span>
+      </div>
+      <div class="kk-margin-top-ss">
+        <div>
+          <form action="." method="post">
+            <input name="vc_id" type="hidden" value="<%= vc.id %>">
+            <div grid-col>
+              <div class="kk-col3" cell>
+                <div class="kk-input-field">
+                  <select name="status" class="kk-select">
+                    <option value="Active">Active</option>
+                    <option value="Revoked">Revoked</option>
+                    <option value="Suspended">Suspended</option>
+                  </select>
+                  <label class="kk-input-label">ステータス</label>
+                </div>
+              </div>
+              <div class="kk-col5" cell>
+                <div class="kk-input-field">
+                  <input name="reason" class="kk-input">
+                  <label class="kk-input-label">変更理由</label>
+                </div>
+              </div>
+              <div class="kk-col4" cell>
+                <div class="kk-input-field">
+                  <button name="type_status" class="kk-button" type="submit" theme="primary" fit>
+                    <span class="material-symbols-outlined kk-margin-right-ss">save_as</span>
+                    更新
+                  </button>
+                  <a class="kk-button kk-margin-left" fit href="/vcstatus/<%= vc.id %>/" target="_blank">
+                    <span class="material-symbols-outlined kk-margin-right-ss">open_in_new</span>Status
+                  </a>
+                </div>
+              </div>
+              <div class="kk-col12" cell>
+                <div class="kk-input-field">
+                  <textarea class="kk-textarea didp-code" rows="8" readonly><%= JSON.stringify(credentialSubject,null,2) %></textarea>
+                  <label class="kk-movable-label">Credential Subject</label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <% } %>
+
+  </div>
+</div>
+
+<script>
+</script>
+
+</body>
+</html>

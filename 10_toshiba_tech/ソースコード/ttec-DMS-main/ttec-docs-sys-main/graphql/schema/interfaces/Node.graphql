@@ -1,0 +1,9 @@
+"""Node"""
+interface Node {
+  """レコード作成日時"""
+  createdAt: DateTime!
+  """レコード更新日時"""
+  updatedAt: DateTime!
+  """物理 ID"""
+  id: ID!
+}

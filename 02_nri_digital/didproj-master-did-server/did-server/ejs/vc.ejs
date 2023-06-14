@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include('./partials/head', {title: 'VC発行'}); %>
+</head>
+<body>
+<div class="kk-sidenav-container" theme="panel">
+<%- include('./partials/menu', {}); %>
+
+<%# コンテンツは下記divの中に記載 %>
+<div class="kk-sidenav-main kk-padding-s">
+  <div class="kk-container kk-padding-s" size-s left>
+    <div class="didp-title kk-margin-right">VC発行</div>
+
+    <% 
+      const metadata = JSON.parse(credential.metadataJson)
+    %>
+
+    <div class="kk-margin-top" style="max-width: 540px;">
+      <%- include('./partials/vcDisplay', {func, metadata, param: {}}); %>
+    </div>
+    <p class="kk-margin-top-l">
+      この <span class="kk-font-bold"><%= credential.name %></span> を発行するには下記URLをクリックするか、QRを読み取ってください。
+    </p>
+    <div grid-col>
+      <div class="kk-col5@s kk-col12" cell>
+        <img src="<%= qr %>">
+      </div>
+      <div class="kk-col7@s kk-col12" style="word-break: break-all;" cell>
+        <div class="kk-card">
+          <a href="<%= issuanceUrl %>" target="_blank">
+            <%= issuanceUrl %>
+          </a>
+        </div>
+        <div class="kk-card kk-margin-top-s kk-font-size-l kk-font-bold">
+          PIN: <%= pin %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+</script>
+
+</body>
+</html>

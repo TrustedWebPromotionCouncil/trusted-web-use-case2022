@@ -1,0 +1,26 @@
+.button {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  padding: 16px 0px;
+
+  width: 50%;
+  max-width: 300px;
+
+  background-color: #ECC743;
+  border-color: #ECC743;
+  border-radius: 8px;
+  border: transparent;
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.7;
+    box-shadow: none;
+    border: white;
+  }
+
+  &:hover {
+    background-color: darken(#b3921d, 3%);
+  }
+}

@@ -1,0 +1,56 @@
+version: "3"
+
+services:
+
+  u-agent:
+    image: bcgovimages/aries-cloudagent:py36-1.16-1_0.7.5
+    ports:
+      - "8101:8101"
+      - "8102:8102"
+    networks:
+      - wlnet
+    entrypoint: /bin/bash
+    environment:
+      ACAPY_WALLET_NAME:
+      ACAPY_WALLET_KEY:
+      ACAPY_WALLET_SEED:
+      POSTGRES_CS:
+      GENESIS_URL:
+      TAIL_SERVER:
+      ENDPOINT:
+      WEBHOOK:
+    command: [
+      "-c", "aca-py start \
+      --inbound-transport http 0.0.0.0 8101 \
+      --outbound-transport http \
+      --outbound-transport ws \
+      --admin 0.0.0.0 8102 \
+      --admin-insecure-mode \
+      --endpoint ${ENDPOINT} \
+      --webhook-url ${WEBHOOK} \
+      --label 'Woollet User Agent' \
+      --wallet-type indy \
+      --wallet-storage-type postgres_storage \
+      --wallet-storage-config '{\"url\":\"${POSTGRES_CS}\",\"wallet_scheme\":\"DatabasePerWallet\"}' \
+      --wallet-storage-creds '{\"account\":\"${PG_USER}\",\"password\":\"${PG_PASS}\",\"admin_account\":\"${PG_ADM}\",\"admin_password\":\"${PG_PASS_ADM}\"}' \
+      --genesis-url ${GENESIS_URL} \
+      --tails-server-base-url ${TAIL_SERVER} \
+      --auto-accept-invites \
+      --auto-ping-connection \
+      --preserve-exchange-records \
+      --enable-undelivered-queue \
+      --debug-connections \
+      --debug-credentials \
+      --debug-presentations \
+      --monitor-ping \
+      --log-level info \
+      --auto-provision \
+      --multitenant \
+      --multitenant-admin \
+      --jwt-secret '${MTT_JWT}' \
+      "
+    ]
+
+  
+networks:
+  wlnet:

@@ -1,0 +1,9 @@
+[
+  {
+    "id": "dwn",
+    "type": "DecentralizedWebNode",
+    "serviceEndpoint": {
+      "nodes": ["http://example-1st-party.com:3000"]
+    }
+  }
+]

@@ -1,0 +1,18 @@
+overwrite: true
+schema: 'graphql/schema.graphql'
+documents: 'src/**/*.graphql'
+generates:
+  graphql/schema.graphql.json:
+    plugins:
+      - 'introspection'
+  src/$view/graphql/client.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+  src/$server/graphql/resolvers.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-resolvers'
+    config:
+      contextType: ../../$server/graphql/context#GraphQLContext

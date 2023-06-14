@@ -1,0 +1,28 @@
+.btnContainer {
+  position: relative;
+  /* padding: 5px; */
+}
+
+.searchInput {
+  float: right;
+  height: 30px;
+  width: 130px;
+  border-radius: 10px;
+}
+
+.btns {
+  margin: 3px;
+  border-radius: 20px;
+  border-color: transparent;
+}
+
+.btns:active {
+  background-color: darkgrey;
+}
+
+.filterContainer {
+  position: absolute;
+  right: 10px;
+  top: -2px;
+  width: 35%;
+}

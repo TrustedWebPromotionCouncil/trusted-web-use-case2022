@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include('../partials/head', {title: '設定'}); %>
+</head>
+<body>
+<div class="kk-sidenav-container" theme="panel">
+<%- include('../partials/menu', {}); %>
+
+<%# コンテンツは下記divの中に記載 %>
+<div id="setting" class="kk-sidenav-main kk-padding-s">
+  <div class="kk-container kk-padding-s" size-s left>
+    <div class="didp-title kk-margin-right">設定</div>
+
+    <div class="kk-card kk-shadow kk-margin-top" grid-col>
+      <input name="wallet_uri" type="hidden" value="<%= setting.walletUri %>">
+
+      <div class="kk-col12" cell>
+        <div class="kk-input-field">
+          <input name="wallet_issuance_uri" class="kk-input" type="text" value="<%= setting.walletIssuanceUri %>" readonly>
+          <label class="kk-input-label">Wallet Issuance URI(VC発行)</label>
+        </div>
+      </div>
+      <div class="kk-col12" cell>
+        <div class="kk-input-field">
+          <input name="wallet_oidc_siop_uri" class="kk-input" type="text" value="<%= setting.walletOidcSiopUri %>" readonly>
+          <label class="kk-input-label">Wallet OIDC SIOP URI(VP提示)</label>
+        </div>
+      </div>
+
+      <div class="kk-margin-top">
+        <button class="kk-button" type="button" fit onclick="openEditModal('setting');">
+          <span class="material-symbols-outlined kk-margin-right-ss">edit</span>編集
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="edit_modal" class="didp-modal" closed>
+  <div>
+    <div id="modal_inner">
+      <form action="." method="post">
+        <div grid-col>
+          <div class="kk-col12" cell>
+            <div class="kk-input-field">
+              <input name="wallet_issuance_uri" class="kk-input _values" type="text" required>
+              <label class="kk-input-label">Wallet Issuance URI</label>
+            </div>
+          </div>
+          <div class="kk-col12" cell>
+            <div class="kk-input-field">
+              <input name="wallet_oidc_siop_uri" class="kk-input _values" type="text" required>
+              <label class="kk-input-label">Wallet OIDC SIOP URI</label>
+            </div>
+          </div>
+        </div>
+        <div class="kk-margin-top" grid-col>
+          <div class="kk-col6" cell>
+            <button class="kk-button" theme="secondary" type="button" onclick="closeModal();">
+              <span class="material-symbols-outlined kk-margin-right-ss">close</span>
+              閉じる
+            </button>
+          </div>
+          <div class="kk-col6" cell>
+            <button name="type_save" class="kk-button" theme="primary" type="submit">
+              <span class="material-symbols-outlined kk-margin-right-ss">create</span>
+              保存
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openEditModal(id) {
+    setModalValues('edit_modal', id);
+    document.getElementById('edit_modal').removeAttribute('closed');
+  }
+  function closeModal() {
+    document.getElementById('edit_modal').setAttribute('closed', '');
+  }
+</script>
+
+</body>
+</html>

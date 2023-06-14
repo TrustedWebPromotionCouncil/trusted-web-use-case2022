@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -ue
+
+CURR_DIR="${PWD}"
+HOME_DIR="$( basename "$( dirname ${0} )" )"
+ROOT_DIR="${CURR_DIR}/${HOME_DIR}/.."
+
+# GraphQL スキーマテンプレート
+__TEMPLATE="$(
+cat << EOT
+import { gql } from "apollo-server-micro";
+
+export const typeDefs = gql\`
+%%TYPEDEFS%%
+\`
+EOT
+)"
+
+# GraphQL スキーマ
+__TYPEDEFS="$( cat "${ROOT_DIR}/graphql/schema.graphql" )"
+
+
+(
+    # GraphQL クライアント生成
+    yarn graphql-codegen --config codegen.yml
+
+    # TypeScript 向けスキーマ定義生成
+    echo "${__TEMPLATE//%%TYPEDEFS%%/${__TYPEDEFS}}" > "${ROOT_DIR}/src/\$server/graphql/graphql.schema.ts"
+) 2>&1

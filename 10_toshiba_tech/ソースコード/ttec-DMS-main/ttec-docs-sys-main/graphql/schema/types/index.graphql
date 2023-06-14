@@ -1,0 +1,103 @@
+"""
+ミューテーションの集合を定義します
+"""
+type Mutation {
+    "特定のスキャンデータを削除します"
+    removeDocument(
+        "ドキュメント ID"
+        documentId: String!
+    ): ID!
+
+    "ユーザーを追加します"
+    addUser(
+        "メールアドレス"
+        email: String!
+        "パスワード"
+        password: String!
+    ): User!
+
+    "ユーザーのパスワードをリセットします"
+    resetPassword(
+        "メールアドレス"
+        email: String!
+        "パスワード"
+        password: String!
+    ): User!
+
+    "ユーザーを削除します"
+    removeUser(
+        "メールアドレス"
+        email: String!
+    ): User!
+}
+
+"""
+クエリの集合を定義します
+"""
+type Query {
+    "スキャンデータの一覧を返却します"
+    documents: [DocumentMetadata!]!
+
+    "特定のスキャンデータを返却します"
+    document(
+        "ドキュメント ID"
+        documentId: String!
+    ): Document!
+
+    "ユーザーを返却します"
+    user: User!
+
+    "DID - GenerateVC"
+    didGenerateVC(
+        "message"
+        message: String!
+    ): String!
+
+    "DID - VerifyVC"
+    didVerifyVC(
+        "message"
+        message: String!
+    ): String!
+
+    "DIDComm - GeneratePlaintextMessage"
+    didcommGeneratePlaintextMessage(
+        "destinations"
+        destinations: [String!]!
+        "message"
+        message: String!
+    ): String!
+
+    "DIDComm - VerifyPlaintextMessage"
+    didcommVerifyPlaintextMessage(
+        "message"
+        message: String!
+    ): String!
+
+    "DIDComm - GenerateSignedMessage"
+    didcommGenerateSignedMessage(
+        "destinations"
+        destinations: [String!]!
+        "message"
+        message: String!
+    ): String!
+
+    "DIDComm - VerifySignedMessage"
+    didcommVerifySignedMessage(
+        "message"
+        message: String!
+    ): String!
+
+    "DIDComm - GenerateEncryptedMessage"
+    didcommGenerateEncryptedMessage(
+        "destinations"
+        destinations: [String!]!
+        "message"
+        message: String!
+    ): String!
+
+    "DIDComm - VerifyEncryptedMessage"
+    didcommVerifyEncryptedMessage(
+        "message"
+        message: String!
+    ): String!
+}

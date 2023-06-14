@@ -1,0 +1,311 @@
+{
+    "id": "1",
+    "time": 1678287572.3161664,
+    "data": [
+        {
+            "id": "4",
+            "data": [
+                {
+                    "type": "tempreture",
+                    "val": "30.6",
+                    "unit": "C"
+                },
+                {
+                    "type": "humidity",
+                    "val": "12.1",
+                    "unit": "%"
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "data": [
+                {
+                    "type": "tempreture",
+                    "val": "22.0",
+                    "unit": "C"
+                },
+                {
+                    "type": "humidity",
+                    "val": "20.2",
+                    "unit": "%"
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "data": [
+                {
+                    "type": "tempreture",
+                    "val": "31.7",
+                    "unit": "C"
+                },
+                {
+                    "type": "humidity",
+                    "val": "11.6",
+                    "unit": "%"
+                }
+            ]
+        },
+        {
+            "id": "1",
+            "data": [
+                {
+                    "type": "brightness",
+                    "val": "0",
+                    "unit": "Lux"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "data": [
+                {
+                    "type": "voltage",
+                    "val": "105.43",
+                    "unit": "V"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "data": [
+                {
+                    "type": "voltage",
+                    "val": "105.45",
+                    "unit": "V"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "data": [
+                {
+                    "type": "amperage",
+                    "val": "0.0",
+                    "unit": "A"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "data": [
+                {
+                    "type": "amperage",
+                    "val": "0.0",
+                    "unit": "A"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "data": [
+                {
+                    "type": "amperage",
+                    "val": "3.36",
+                    "unit": "A"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "data": [
+                {
+                    "type": "amperage",
+                    "val": "0.9",
+                    "unit": "A"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "data": [
+                {
+                    "type": "amperage",
+                    "val": "0.74",
+                    "unit": "A"
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "data": [
+                {
+                    "type": "voltage",
+                    "val": "234.0",
+                    "unit": "V"
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "data": [
+                {
+                    "type": "tempreture",
+                    "val": "31",
+                    "unit": "C"
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "data": [
+                {
+                    "type": "capacity",
+                    "val": "40",
+                    "unit": "%"
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "data": [
+                {
+                    "type": "amperage",
+                    "val": "-1.5",
+                    "unit": "A"
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "data": [
+                {
+                    "type": "powerunit",
+                    "val": "-351",
+                    "unit": "W"
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "data": [
+                {
+                    "type": "tempreture",
+                    "val": "41",
+                    "unit": "C"
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "data": [
+                {
+                    "type": "voltage",
+                    "val": "0.0",
+                    "unit": "V"
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "data": [
+                {
+                    "type": "amperage",
+                    "val": "0.0",
+                    "unit": "A"
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "data": [
+                {
+                    "type": "powerunit",
+                    "val": "0",
+                    "unit": "W"
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "data": [
+                {
+                    "type": "voltage",
+                    "val": "100.9",
+                    "unit": "V"
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "data": [
+                {
+                    "type": "amperage",
+                    "val": "1.2",
+                    "unit": "A"
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "data": [
+                {
+                    "type": "powerunit",
+                    "val": "47",
+                    "unit": "W"
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "data": [
+                {
+                    "type": "supplyunit",
+                    "val": "131",
+                    "unit": "VA"
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "data": [
+                {
+                    "type": "voltage",
+                    "val": "100.9",
+                    "unit": "V"
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "data": [
+                {
+                    "type": "amperage",
+                    "val": "3.4",
+                    "unit": "A"
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "data": [
+                {
+                    "type": "powerunit",
+                    "val": "288",
+                    "unit": "W"
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "data": [
+                {
+                    "type": "supplyunit",
+                    "val": "360",
+                    "unit": "VA"
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "data": [
+                {
+                    "type": "frequency",
+                    "val": "60.0",
+                    "unit": "Hz"
+                }
+            ]
+        }
+    ]
+}

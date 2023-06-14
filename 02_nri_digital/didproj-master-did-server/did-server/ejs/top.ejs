@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include('./partials/head', {title: 'トップ'}); %>
+</head>
+<body>
+<div class="kk-sidenav-container" theme="panel">
+<%- include('./partials/menu', {}); %>
+
+<%# コンテンツは下記divの中に記載 %>
+<div class="kk-sidenav-main kk-padding-s">
+  <div class="kk-container kk-padding-s" size-m left grid-col>
+
+    <div class="kk-col12 kk-bg-color-normal" style="margin: 4px;" cell>
+      <h3>機能一覧</h3>
+      <ul>
+        <li>
+          <a href="/manage/issuer/">管理 > ISSUER</a><br>
+          Issuerの追加や、Credential(VCの定義)の追加・変更。<br>
+          発行したVCのステータス変更。(発行したVC一覧)
+        </li>
+        <li>
+          <a href="/manage/verifier/">管理 > VERIFIER</a><br>
+          Verifierの追加や、VP提示条件の追加・変更
+        </li>
+        <li><a href="/issuer/">VCの発行</a></li>
+        <li><a href="/verifier/">VPの検証</a></li>
+        <li>
+          <a href="/tools/">ツール類</a><br>
+          お試しツールなど<br>
+          ・DID Resolber<br>
+          ・鍵からDID生成
+        </li>
+        <li>
+          <a href="/docs/" target="_blank">SDKドキュメント</a><br>
+          SDKのAPI仕様を参照できます。（別タブで開く
+        </li>
+      </ul>
+    </div>
+
+    <div class="kk-col6@m kk-col12 kk-bg-color-normal" style="margin: 4px;" cell>
+      <h3>申し送り事項</h3>
+      <ul>
+        <li>IssuerやVerifierなどの新規追加は好きにやってもらって構いません。</li>
+        <li>データはモジュール更新のタイミングなどでクリアされる可能性があります。</li>
+      </ul>
+    </div>
+
+    <div class="kk-col6@m kk-col12 kk-bg-color-normal" style="margin: 4px;" cell>
+      <h3>更新履歴</h3>
+
+      <div class="kk-padding-ss kk-margin-bottom-ss">
+        <div class="kk-accordion kk-font-bold" theme="icon" >2022/09/22</div>
+        <div>
+          <ul>
+            <li>DIDドキュメントにLinkedDomains情報を追加。</li>
+          </ul>
+        </div>
+
+        <div class="kk-accordion kk-font-bold" theme="icon" >2022/09/09</div>
+        <div>
+          <ul>
+            <li>初版。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+</script>
+
+</body>
+</html>

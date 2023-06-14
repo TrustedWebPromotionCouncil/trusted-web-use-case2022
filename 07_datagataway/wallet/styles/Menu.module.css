@@ -1,0 +1,30 @@
+.btnContainer {
+  display: grid;
+  align-content: center;
+}
+
+.btnContainerActive {
+  display: grid;
+  align-content: center;
+  background-color: #080f38;
+}
+
+.btn {
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  font-size: 1.0rem;
+  height: 70px;
+}
+
+/* Specific styles for non-active links */
+.nonActive {
+  color: white;
+}
+
+/* Specific styles for active links */
+.active {
+  color: #5acfb0;
+}
+

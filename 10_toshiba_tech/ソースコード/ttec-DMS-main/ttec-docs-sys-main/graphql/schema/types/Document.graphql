@@ -1,0 +1,28 @@
+"""文章"""
+type Document implements Node {
+  """レコード ID"""
+  id: ID!
+  """レコード作成日時"""
+  createdAt: DateTime!
+  """レコード更新日時"""
+  updatedAt: DateTime!
+
+  """DID"""
+  did: String!
+  """スキャンデータ (VC)"""
+  vc: String!
+  """設置場所"""
+  location: String
+  """ユーザー名 (ID)"""
+  username: String
+  """シリアル番号"""
+  serialNumber: String
+  """スキャン日時"""
+  scanedAt: DateTime!
+  """ファイル名"""
+  filename: String!
+  """ファイルフォーマット (MIME タイプ)"""
+  mimeType: String!
+  """PDF ファイル"""
+  data: String!
+}

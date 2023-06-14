@@ -1,0 +1,34 @@
+name: plr_trusted_web
+description: Trusted Web implementation with PLR.
+version: 0.0.1
+homepage: https://www.assemblogue.com/
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  plr_console:
+    path: ../plrDart/plr_console
+
+  dart_bbs:
+    git:
+      url: https://github.com/yoshiteru-furukawa/dart-bbs.git
+
+  args:
+  collection:
+  crypto_keys:
+  dart_ssi:
+  drift:
+  jose:
+  sprintf:
+
+dev_dependencies:
+  drift_dev:
+  build_runner:
+
+executables:
+  create_config.dart:
+  plr_trusted_web:
+
+publish_to:
+  none

@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Holder {
+  id Int @id @default(autoincrement())
+  email String @unique
+  password String
+  name String?
+  description String?
+}
+
+model Issuer {
+  id Int @id @default(autoincrement())
+  email String @unique
+  password String
+  name String?
+  description String?
+}
+
+model Verifier {
+  id Int @id @default(autoincrement())
+  email String @unique
+  password String
+  name String
+  description String?
+}
+
+model Skill {
+  id Int @id @default(autoincrement())
+  name String
+  level String
+  description String?
+  holderEmail String
+  holderName String?
+  lastUpdate DateTime @default(now())
+}
+
+model Credential {
+  id Int @id @default(autoincrement())
+  name String
+  selfLevel String
+  selfDescription String?
+  holderEmail String
+  holderName String?
+  level String?
+  description String?
+  certified Boolean @default(false)
+  issuerEmail String
+  issuerName String?
+}
+
+model Proof {
+  id Int @id @default(autoincrement())
+  trustSealId String
+  hashValue String
+  proofHash String?
+  holderEmail String
+  holderName String?
+  verifierEmail String
+  verifierName String
+}

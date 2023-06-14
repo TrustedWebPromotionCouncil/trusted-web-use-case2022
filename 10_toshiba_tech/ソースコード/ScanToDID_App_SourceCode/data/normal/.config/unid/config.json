@@ -1,0 +1,31 @@
+{
+  "did": null,
+  "mnemonic": null,
+  "key_pairs": {
+    "sign": null,
+    "update": null,
+    "recover": null,
+    "encrypt": null
+  },
+  "extensions": {
+    "trng": {
+      "read": {
+        "filename": "/application/app/bd8a8fef-efe7-487a-a0c2-ffffffffff00/appstorage/normal/script/libtrng.so",
+        "symbol": "read_trng"
+      }
+    },
+    "secure_keystore": {
+      "write": {
+        "filename": "/application/app/bd8a8fef-efe7-487a-a0c2-ffffffffff00/appstorage/normal/script/libkbrwrap.so.0",
+        "symbol": "KBRSetKey"
+      },
+      "read": {
+        "filename": "/application/app/bd8a8fef-efe7-487a-a0c2-ffffffffff00/appstorage/normal/script/libkbrwrap.so.0",
+        "symbol": "KBRGetKey"
+      }
+    },
+    "cipher": null
+  },
+  "is_initialized": false,
+  "schema_version": 1
+}

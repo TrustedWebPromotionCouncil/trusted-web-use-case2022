@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>OK</title>
+    </head>
+    <body>
+        <h1 th:inline="text">認証OK</h1>
+        <o>トークン情報</o>
+    	<p th:text="${token}"></p>
+
+    </body>
+</html>

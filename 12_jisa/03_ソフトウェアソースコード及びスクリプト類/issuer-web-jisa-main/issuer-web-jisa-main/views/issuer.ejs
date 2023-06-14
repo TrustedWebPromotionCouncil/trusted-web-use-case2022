@@ -1,0 +1,127 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Issue a credential</title>
+        <link rel="stylesheet" href="/lib/styles.css">
+    </head>
+        
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand">
+                  <img class="logo" src="/media/selmid_logo_1.png" alt="selmid" >
+                </a>
+                <h5 class="card-img-top">PoC : 工業会証明書VC</h5>
+            </div>
+        </nav>
+      <P></P>
+        <div id="wrap">
+            <div style="text-align: center;">
+            <p>
+                <p>
+                    <h3>工業会証明書VC</h3>
+                    <h5>下記フォームに必要事項を入力し、「Issue a credential」ボタンを押下して下さい。</h5>
+                </p>
+              <p>
+                <form id="fetchForm" >
+                    <table class="sw-table">
+                        <tbody>
+                            <th>
+                                <tr>
+                                    <td calss="subtitle00">項目</td>
+                                    <td calss="subtitle01">入力フォーム</td>
+                                </tr>
+                            </th>
+                            <tr>
+                                <td calss="subtitle00">減価償却資産の種類</td>
+                                <td calss="subtitle01"><input type="text" name="depreciableType" id="depreciableType" value="Software" class="m-form-text"></td>
+                            </tr>
+                            <tr>
+                                <td calss="subtitle00">設備の種類又は細目</td>
+                                <td calss="subtitle01"><input type="text" name="facilityType" id="facilityType" value="その他" class="m-form-text"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <button type="button" id="issuance" class="button">Issue a credential</button>
+              </p>
+            </p>
+            <div id="custom-identity-wallet" class="button-issue" style="margin-top: 50px;"></div>
+
+            <div id="message-wrapper" class="margin-bottom-75 margin-top-75" style="display: none">
+                <i class="fas fa-user-check green icon-text-large margin-bottom-25"></i>
+                <div id="message"></div>
+            </div>
+
+            <script>
+                var Issuance = document.getElementById('issuance');
+                // var qrcode = new QRCode("qrcode", { width: 300, height: 300 });
+                var respIssuanceReq = null;
+
+                function openExtension(redirectURL){
+                    window.postMessage(
+                        {
+                            type: "IDENTITY_WALLET",
+                            action: "OPEN_TAB",
+                            data: {
+                                redirectURL, // openid-vc://?request_uri=...
+                            },
+                        },
+                        "*"
+                    );
+                }
+
+                var urlParam = location.search.substring(1);
+                var transactionIDparam = null;
+                if(urlParam){
+                    var param = urlParam.split('&');
+                    var paramArray = [];
+                    for (i = 0; i < param.length; i++) {
+                        var paramItem = param[i].split('=');
+                        paramArray[paramItem[0]] = paramItem[1];
+                    }
+                    if (paramArray.transactionID) {
+                        transactionIDparam = paramArray.transactionID;
+                    }
+                }
+                Issuance.addEventListener('click', () => {
+                    var fdata = document.getElementById('fetchForm');
+                    var formData = new FormData(fdata);
+                    var postjson = {};
+                    formData.forEach(function(value, key){
+                        postjson[key] = value;
+                    });
+                    fetch('/api/issuer/issuance-request', 
+                    {
+                        method: "POST",
+                        headers: {
+                            'Content-type':'application/json'
+                        },
+                        body: JSON.stringify(postjson) //formData
+                    })
+                    .then(function(response) {
+                        response.text()
+                        .catch(error => document.getElementById("message").innerHTML = error)
+                        .then(function(message) {
+                            respIssuanceReq = JSON.parse(message);
+                            document.getElementById('message-wrapper').style.display = "block";
+                            document.getElementById('issuance').style.display = "none";
+                            document.getElementById('custom-identity-wallet').innerHTML = `<button type="button" id="custom-identity-wallet-button" class="button-issue" onClick="location.href='${respIssuanceReq.wallet_url}/redirect?url=${respIssuanceReq.url}'+'&transactionID='+'${transactionIDparam}'" class="button">VCを発行する</button>`;
+                        }).catch(error => { console.log(error.message); })
+                    }).catch(error => { console.log(error.message); })
+                    var date = new Date();
+                    var checkStatus = setInterval(function () {
+                        if(respIssuanceReq){
+                            var date = Date.now();
+                            if (respIssuanceReq.expiry < Math.floor( date / 1000 )){
+                                document.getElementById('custom-identity-wallet').style.display = "none";
+                                document.getElementById('message').innerHTML = "発行リクエストの有効期限がきれました。 ページを更新して、もう一度お試しください。";
+                            }
+                        }
+                    }, 5000);
+                })
+            </script>
+            </div>
+            </div>
+    </body>
+</html>

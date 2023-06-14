@@ -1,0 +1,26 @@
+analyzer:
+  language:
+    #strict-casts: true
+    #strict-inference: true
+    #strict-raw-types: true
+
+linter:
+  rules:
+    - avoid_init_to_null
+    - await_only_futures
+    - avoid_private_typedef_functions
+    - cancel_subscriptions
+    - close_sinks
+    - empty_constructor_bodies
+    - empty_statements
+    - hash_and_equals
+    - library_private_types_in_public_api
+    - prefer_const_constructors
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - prefer_constructors_over_static_methods
+    - prefer_final_fields
+    #- prefer_final_in_for_each
+    #- prefer_final_locals
+    - type_init_formals
+    - unnecessary_statements

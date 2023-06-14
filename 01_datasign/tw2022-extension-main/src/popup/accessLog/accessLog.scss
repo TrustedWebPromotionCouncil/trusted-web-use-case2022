@@ -1,0 +1,30 @@
+@import "../../index";
+
+.no-log {
+  display: flex;
+  justify-content: center;
+  @extend .text-styles-headline;
+}
+
+.access-log-list {
+  .log {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+    padding: 4px 0;
+  }
+  .log-caption {
+    @extend .text-styles-caption;
+    margin-right: 8px;
+    width: 80px;
+  }
+  .log-value {
+    display: flex;
+    //align-items: center;
+    @extend .text-styles-body1;
+    max-width: 208px;
+    .did {
+      max-width: 176px;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AppProperties xmlns="http://www.toshibatec.co.jp/e-STUDIO/eApp/package">
+  <AppId>bd8a8fef-efe7-487a-a0c2-ffffffffff00</AppId>
+  <AppProductId>A000.000.0064.ScanToDID001</AppProductId>
+  <AppName>ScanToDID</AppName>
+  <AppVersion>1.0.0</AppVersion>
+  <AppCreatedDate>2022-09-01</AppCreatedDate>
+  <FrameworkVersion>2.1.2</FrameworkVersion>
+  <AppType>Home</AppType>
+  <AppStartType>Auto</AppStartType>
+  <HasMySettingApp>False</HasMySettingApp>
+  <LicenseNecessity>NotRequired</LicenseNecessity>
+  <AppProgramLanguage>Python</AppProgramLanguage>
+  <SupportsPython3>True</SupportsPython3>
+  <WebAPIApp>True</WebAPIApp>
+  <AddsLocalization>False</AddsLocalization>
+  <OverwritesData>True</OverwritesData>
+  <AutoAuthentication>Enable</AutoAuthentication>
+  <AppSummary>-</AppSummary>
+  <AllowedOemIds>00000</AllowedOemIds>
+  <BlocksSuperSleep>False</BlocksSuperSleep>
+  <AppButtonName1>ScanToDID</AppButtonName1>
+  <AppButtonName2></AppButtonName2>
+  <VendorId>00000000</VendorId>
+  <VendorName>Toshiba Tec Corporation</VendorName>
+  <VendorURL>http://www.toshibatec.com/global/</VendorURL>
+  <VendorPhoneNumber>-</VendorPhoneNumber>
+  <VendorEmailAddress>-</VendorEmailAddress>
+</AppProperties>

@@ -1,0 +1,9 @@
+{
+    "navTitle": "Woollet 炭素追跡システム",
+    "title": "Bienvenue dans mon application NextJS i18n !",
+    "description": "J'utilise la bibliothèque Next-Translate pour traduire cette page.",
+    "createAccountDesc": "カテゴリーを選択し、組織名を記入後、Woollet Walletに表示されるQRコードを読み取ってください。",
+    "createAccountInvite": "Do not have an user Wallet, yet?",
+    "Woollet Staff Sign-in": "Woollet Staff Sign-in",
+    "Scan QRCode with Wallet": "Scan QRCode with Wallet"
+}

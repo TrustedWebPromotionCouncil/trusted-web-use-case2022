@@ -1,0 +1,12 @@
+"""ユーザー"""
+type User implements Node {
+  """レコード ID"""
+  id: ID!
+  """レコード作成日時"""
+  createdAt: DateTime!
+  """レコード更新日時"""
+  updatedAt: DateTime!
+
+  """メールアドレス"""
+  email: String!
+}

@@ -1,0 +1,7 @@
+py-algorand-sdk
+pyteal
+python-dotenv
+flake8
+black
+mypy
+pytest

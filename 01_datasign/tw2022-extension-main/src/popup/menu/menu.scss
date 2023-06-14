@@ -1,0 +1,6 @@
+@import "../../index.scss";
+
+.section-label {
+  padding-bottom: 8px;
+  @extend .text-styles-headline;
+}

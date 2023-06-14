@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include('../partials/head', {title: 'VP提示条件管理'}); %>
+</head>
+<body>
+<div class="kk-sidenav-container" theme="panel">
+<%- include('../partials/menu', {}); %>
+
+<%# コンテンツは下記divの中に記載 %>
+<div class="kk-sidenav-main kk-padding-s">
+  <div class="kk-container kk-padding-s" size-s left>
+    <div class="didp-title kk-margin-right">VP提示条件 - <%= verifier.name %></div>
+    <button class="kk-button" type="button" fit onclick="openAddModal();">
+      <span class="material-symbols-outlined kk-margin-right-ss">add_business</span>新規追加
+    </button>
+
+    <%
+      for (const presentation of verifier.presentationDefinitionList) {
+        const definition = JSON.parse(presentation.definitionJson)
+    %>
+    <div id="<%= presentation.id %>" class="kk-card kk-shadow kk-margin-top">
+      <input name="id" type="hidden" value="<%= presentation.id %>">
+      <input name="name" type="hidden" value="<%= presentation.name %>">
+
+      <div class="kk-card-title"><%= presentation.name %></div>
+
+      <div class="kk-accordion kk-margin-top-ss" theme="icon" closed>
+        <span class="kk-font-bold">Presentation Definition: </span><%= definition.id %>
+      </div>
+      <div class="didp-padac kk-margin-top-ss">
+        <textarea name="definition" class="kk-textarea didp-code" rows="12" readonly><%= JSON.stringify(definition,null,2) %></textarea>
+      </div>
+
+      <div class="kk-margin-top">
+        <button class="kk-button" type="button" fit onclick="openEditModal('<%= presentation.id %>');">
+          <span class="material-symbols-outlined kk-margin-right-ss">edit</span>編集
+        </button>
+      </div>
+    </div>
+    <% } %>
+
+  </div>
+</div>
+
+<div id="edit_modal" class="didp-modal" closed>
+  <div>
+    <div id="modal_inner">
+      <form action="." method="post">
+        <input name="verifier_id" type="hidden" value="<%= verifier.id %>">
+
+        <div grid-col>
+          <div class="kk-col12" cell>
+            <div class="kk-input-field">
+              <input name="id" class="kk-input _values" type="text" readonly>
+              <label class="kk-input-label">ID(UUID自動発行)</label>
+            </div>
+          </div>
+          <div class="kk-col12" cell>
+            <div class="kk-input-field">
+              <input name="name" class="kk-input _values" type="text" maxlength="40" required>
+              <label class="kk-input-label">名称</label>
+            </div>
+          </div>
+          <div class="kk-col12" cell>
+            <div class="kk-input-field">
+              <textarea name="definition" class="kk-textarea didp-code _values" rows="16"></textarea>
+              <label class="kk-input-label">Presentation Definition</label>
+            </div>
+          </div>
+        </div>
+        <div class="kk-margin-top" grid-col>
+          <div class="kk-col6" cell>
+            <button class="kk-button" theme="secondary" type="button" onclick="closeModal();">
+              <span class="material-symbols-outlined kk-margin-right-ss">close</span>
+              閉じる
+            </button>
+          </div>
+          <div class="kk-col6" cell>
+            <button name="type_save" class="kk-button" theme="primary" type="submit">
+              <span class="material-symbols-outlined kk-margin-right-ss">create</span>
+              保存
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="default_values" hidden>
+  <textarea name="definition"><%= presentationDefinitionSampleJson %></textarea>
+</div>
+
+<script>
+  function openAddModal() {
+    setModalValues('edit_modal', 'default_values');
+    document.getElementById('edit_modal').removeAttribute('closed');
+  }
+  function openEditModal(id) {
+    setModalValues('edit_modal', id);
+    document.getElementById('edit_modal').removeAttribute('closed');
+  }
+  function closeModal() {
+    document.getElementById('edit_modal').setAttribute('closed', '');
+  }
+</script>
+
+</body>
+</html>

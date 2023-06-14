@@ -1,0 +1,65 @@
+GET http://localhost:8080/api/transactions HTTP/1.1
+
+###
+GET http://localhost:8080/api/transactions/6fee41ad-7cc7-4963-808d-a603c84778e1 HTTP/1.1
+
+###
+POST http://localhost:8080/api/transactions HTTP/1.1
+content-type: application/json
+
+{ 
+  "transaction": {
+    "title": "Site-Scope",
+    "status": "ソフトウェア利用証明書取得待ち",
+    "maker": "(株)建設システム",
+    "updatedAt": 1668668481,
+    "vendor": {
+      "name": "株式会社xxxxx電機",
+      "url": "https://www.xxxx.co.jp/",
+      "credentialIssuerUrl": "https://vc-issuer-maker.azurewebsites.net/issuer"
+    },
+    "industryAssociation": {
+      "name": "情報サービス産業協会(JISA)",
+      "url": "https://www.jisa.or.jp/",
+      "credentialIssuerUrl": "https://vc-issuer-jisa.azurewebsites.net/"
+    },
+    "theSmallAndMediumEnterpriseAgency": {
+      "name": "所管官庁(当該中小事業者の業種所管)",
+      "url": "https://www.meti.go.jp/",
+      "credentialIssuerUrl": "https://www.meti.go.jp/credential/issue"
+    },
+    "transactionID": "5D0A3559-DFF9-4C59-A3F8-01514B990047"
+  }
+}
+
+###
+POST http://localhost:8080/api/transactions/4A42E264-D774-4457-B3B1-BD9C27730A25/update HTTP/1.1
+content-type: application/json
+
+{ 
+  "transaction": {
+    "title": "Site-Scope",
+    "status": "ソフトウェア利用証明書取得待ち",
+    "maker": "(株)建設システム",
+    "updatedAt": 1668668481,
+    "vendor": {
+      "name": "株式会社put電機",
+      "url": "https://www.xxxx.co.jp/",
+      "credentialIssuerUrl": "https://vc-issuer-maker.azurewebsites.net/issuer"
+    },
+    "industryAssociation": {
+      "name": "情報サービス産業協会(JISA)",
+      "url": "https://www.jisa.or.jp/",
+      "credentialIssuerUrl": "https://vc-issuer-jisa.azurewebsites.net/"
+    },
+    "theSmallAndMediumEnterpriseAgency": {
+      "name": "所管官庁(当該中小事業者の業種所管)",
+      "url": "https://www.meti.go.jp/",
+      "credentialIssuerUrl": "https://www.meti.go.jp/credential/issue"
+    },
+    "transactionID": "5D0A3559-DFF9-4C59-A3F8-01514B990047"
+  }
+}
+
+###
+DELETE http://localhost:8080/api/transactions/5d0a3559-dff9-4c59-a3f8-01514b990047 HTTP/1.1

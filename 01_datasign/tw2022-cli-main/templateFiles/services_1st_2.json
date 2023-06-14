@@ -1,0 +1,7 @@
+[
+  {
+    "id": "domain-1",
+    "type": "LinkedDomains",
+    "serviceEndpoint": "http://example-1st-party2.com:9004"
+  }
+]

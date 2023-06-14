@@ -1,0 +1,62 @@
+.kk-sidenav-container {
+  --kk-sidenav-width: 200px;
+}
+
+.didp-title {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-left: 24px;
+  padding: 0 4px;
+  border-bottom: 1px solid #ccc;
+}
+
+.didp-linkbox:hover {
+  text-decoration: none !important;
+  opacity: 0.8;
+}
+
+.didp-padac {
+  margin-left: 22px;
+}
+
+.didp-code {
+  font-family: var(--kk-font-family-code);
+  font-size: var(--kk-font-size-s);
+}
+
+.didp-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 200;
+  pointer-events: none;
+  overflow: hidden;
+}
+.didp-modal>div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  pointer-events: all;
+  transition: .4s;
+  -webkit-transition: .4s;
+}
+.didp-modal>div>div {
+  max-width: 640px;
+  margin: auto;
+  background-color: #fff;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+.didp-modal[closed]>div {
+  top: -100%;
+  opacity: 0;
+}
+.didp-modal[closed][reverse]>div {
+  top: 100%;
+}

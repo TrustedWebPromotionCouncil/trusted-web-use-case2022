@@ -1,0 +1,12 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "did-resolver": "^4.0.1",
+    "firebase": "^9.9.4",
+    "firebase-tools": "^11.16.1",
+    "global": "^4.4.0"
+  }
+}

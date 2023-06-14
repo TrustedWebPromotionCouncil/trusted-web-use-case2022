@@ -1,0 +1,16 @@
+// Custom.scss
+// Option B: Include parts of Bootstrap
+$primary: #0509F4;
+$danger: #ff4136;
+$success: #00C853;
+
+@import '../node_modules/bootstrap/scss/functions';
+$input-placeholder-color: #DAD9D9;
+$input-focus-border-color: tint-color(#ECC743, 50%);
+$input-focus-box-shadow: none;
+
+$component-active-color: #9B9B9B;
+$component-active-bg: #ECC743;
+$form-check-input-checked-bg-color: white;
+$form-check-radio-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#9B9B9B'/></svg>");// https://getbootstrap.jp/docs/5.0/customize/sass/
+@import "../node_modules/bootstrap/scss/bootstrap";

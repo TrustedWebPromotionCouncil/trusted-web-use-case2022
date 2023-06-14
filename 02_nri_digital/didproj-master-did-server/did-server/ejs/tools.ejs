@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include('./partials/head', {title: 'ツール類'}); %>
+</head>
+<body>
+<div class="kk-sidenav-container" theme="panel">
+<%- include('./partials/menu', {}); %>
+
+<%# コンテンツは下記divの中に記載 %>
+<div class="kk-sidenav-main kk-padding-s">
+  <div class="kk-container kk-padding-s" size-s left>
+    <div class="didp-title kk-margin-right">ツール類</div>
+
+    <div class="kk-card kk-shadow kk-margin-top">
+      <div class="kk-card-title">DID Resolver</div>
+
+      <div class="kk-input-field">
+        <textarea id="t1_did" class="kk-textarea didp-code" rows="2"></textarea>
+        <label class="kk-input-label">DID</label>
+      </div>
+      
+      <button class="kk-button" theme="primary" type="button" fit onclick="resolve();">
+        <span class="material-symbols-outlined kk-margin-right-ss">downloading</span>
+        Resolve
+      </button>
+      
+      <div class="kk-input-field">
+        <textarea id="t1_did_doc" class="kk-textarea didp-code" rows="7" readonly></textarea>
+        <label class="kk-input-label">DID Document</label>
+      </div>
+    </div>
+
+    <div class="kk-card kk-shadow kk-margin-top">
+      <div class="kk-card-title">鍵→DID生成</div>
+
+      <div class="kk-input-field">
+        <textarea id="t2_keys" class="kk-textarea didp-code" rows="7"></textarea>
+        <label class="kk-input-label">鍵情報(JSON)</label>
+      </div>
+      
+      <button class="kk-button" theme="primary" type="button" fit onclick="key2Did();">
+        <span class="material-symbols-outlined kk-margin-right-ss">downloading</span>
+        DID生成
+      </button>
+      
+      <div class="kk-input-field">
+        <textarea id="t2_did" class="kk-textarea didp-code" rows="7" readonly></textarea>
+        <label class="kk-input-label">DID</label>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function resolve() {
+    fetch('/tools', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        'type': 'resolve',
+        'did': document.getElementById('t1_did').value
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('t1_did_doc').innerHTML = data.did_doc;
+    })
+  }
+  function key2Did() {
+    fetch('/tools', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        'type': 'key2did',
+        'keys': JSON.parse(document.getElementById('t2_keys').value)
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('t2_did').innerHTML = data.did;
+    })
+  }
+</script>
+
+</body>
+</html>

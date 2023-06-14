@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Verify a credential</title>
+        <meta name="description" content="Verify a DID Developer Community Credential">
+        <link rel="stylesheet" href="/lib/styles.css">
+    </head>    
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand">
+                  <img class="logo" src="/media/selmid_logo_1.png" alt="selmid" >
+                </a>
+                <h5 class="card-img-top">PoC : 税務署</h5>
+            </div>
+        </nav>
+        <div id="wrap">
+            <div style="text-align: center;">
+                <h1>各種VCの検証</h1>
+                <h5>「VERIFY CREDENTIAL」ボタンを押下して下さい。</h5>
+        
+                <button type="button" id="btn-verifier" class="button">VERIFY CREDENTIAL</button>
+                <div id="custom-identity-wallet" class="button-issue" style="margin-top: 50px;"></div>
+
+                <div id="message-wrapper" class="margin-bottom-75 margin-top-75" style="display: none">
+                    <i class="fas fa-user-check green icon-text-large margin-bottom-25"></i>
+                    <div id="message"></div>
+                    <br />
+                    <div id="subject"></div>
+                    <br />
+                    <div id="payload"></div>
+                </div>
+
+                <script>
+                    var verifier = document.getElementById('btn-verifier');
+                    var signOut = document.getElementById('sign-out');
+                    var display = document.getElementById('display');
+                    var respPresentationReq = null;
+
+                    var urlParam = location.search.substring(1);
+                    var transactionIDparam = null;
+                    if(urlParam){
+                        var param = urlParam.split('&');
+                        var paramArray = [];
+                        for (i = 0; i < param.length; i++) {
+                            var paramItem = param[i].split('=');
+                            paramArray[paramItem[0]] = paramItem[1];
+                        }
+                        if (paramArray.transactionID) {
+                            transactionIDparam = paramArray.transactionID;
+                        }
+                    };
+
+                    verifier.addEventListener('click', () => {
+                        fetch('/api/verifier/presentation-request')
+                        .then(function(response) {
+                            response.text()
+                            .catch(error => document.getElementById("message").innerHTML = error)
+                            .then(function(message) {
+                                respPresentationReq = JSON.parse(message);
+                                document.getElementById('message-wrapper').style.display = "block";
+                                document.getElementById('btn-verifier').style.display = "none";
+                                document.getElementById('custom-identity-wallet').innerHTML = `<button type="button" id="custom-identity-wallet-button" onClick="location.href='${respPresentationReq.wallet_url}/redirect?url=${respPresentationReq.url}'+'&transactionID='+'${transactionIDparam}'" class="button">VCを検証する</button>`;
+                            }).catch(error => { console.log(error.message); })
+                        }).catch(error => { console.log(error.message); })
+                        var date = new Date();
+                        var checkStatus = setInterval(function () {
+                            if(respPresentationReq){
+                                var date = Date.now();
+                                if (respPresentationReq.expiry < Math.floor( date / 1000 )){
+                                    document.getElementById('custom-identity-wallet').style.display = "none";
+                                    document.getElementById('message').innerHTML = "発行リクエストの有効期限がきれました。 ページを更新して、もう一度お試しください。";
+                                }
+                            }
+                        }, 5000);
+                    })
+                </script>
+            </div>
+        </div>
+    </body>
+</html>

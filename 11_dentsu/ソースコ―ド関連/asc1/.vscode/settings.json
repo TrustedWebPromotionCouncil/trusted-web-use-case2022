@@ -1,0 +1,37 @@
+{
+  "python.terminal.activateEnvInCurrentTerminal": true,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.formatting.provider": "black",
+  "python.linting.lintOnSave": true,
+  "editor.formatOnSave": true,
+  "python.analysis.typeCheckingMode": "strict",
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingTypeStubs": "none",
+    "reportUnknownVariableType": "none",
+    "reportUnknownMemberType": "none",
+    "reportGeneralTypeIssues": "none"
+  },
+  "python.linting.flake8Args": [
+    "--max-line-length=89"
+  ],
+  "python.linting.mypyArgs": [
+    "--show-error-codes",
+    "--strict",
+    "--ignore-missing-imports"
+    //"--disable-error-code no-any-return"
+  ],
+  "python.testing.pytestEnabled": true,
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.formatOnPaste": false
+  },
+  "python.testing.pytestArgs": [
+    "-s"
+  ],
+  "python.testing.unittestEnabled": false
+}

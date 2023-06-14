@@ -1,0 +1,16 @@
+"""文章"""
+type DocumentMetadata implements Node {
+  """レコード ID"""
+  id: ID!
+  """レコード作成日時"""
+  createdAt: DateTime!
+  """レコード更新日時"""
+  updatedAt: DateTime!
+
+  """設置場所"""
+  location: String
+  """スキャン日時"""
+  scanedAt: DateTime!
+  """ファイル名"""
+  filename: String!
+}

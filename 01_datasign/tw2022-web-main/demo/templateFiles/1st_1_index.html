@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="trusted-web:data-requirement" content="email"/>
+    <title>example-1st-party1.com</title>
+    <script>
+        (function () {
+            const tagJs = document.createElement("script");
+            const s = document.getElementsByTagName("script")[0];
+            tagJs.async = true;
+            tagJs.src = "http://example-3rd-party1.com:9002";
+            s.parentNode.insertBefore(tagJs, s);
+        }());
+    </script>
+    <script>
+        (function () {
+            const tagJs = document.createElement("script");
+            const s = document.getElementsByTagName("script")[0];
+            tagJs.async = true;
+            tagJs.src = "http://example-3rd-party2.com:9003";
+            s.parentNode.insertBefore(tagJs, s);
+        }());
+    </script>
+</head>
+<body>
+<h1>Originator Profile設置サイト</h1>
+<div><a href="http://example-1st-party1.com:9001/.well-known/op-document">OP確認</a></div>
+<div><a href="http://example-1st-party1.com:9001/.well-known/did.json">DID確認</a></div>
+</body>
+</html>

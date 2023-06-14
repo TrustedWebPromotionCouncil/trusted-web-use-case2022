@@ -1,0 +1,114 @@
+{
+  "name": "tw2022-extension",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@decentralized-identity/ion-tools": "^0.1.1",
+    "@metamask/eth-hd-keyring": "^4.0.2",
+    "@tbd54566975/dwn-sdk-js": "^0.0.12",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^27.0.1",
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/jwk-to-pem": "^2.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "base64url": "^3.0.1",
+    "bootstrap": "^5.2.3",
+    "copy-webpack-plugin": "6.3.2",
+    "elliptic": "^6.5.4",
+    "eth-keyring-controller": "^8.0.1",
+    "fetch-mock": "^9.11.0",
+    "formik": "^2.2.9",
+    "grpc-tools": "^1.12.4",
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.5",
+    "jwt-decode": "^3.1.2",
+    "react": "^18.2.0",
+    "react-auth-code-input": "^3.2.1",
+    "react-bootstrap": "^2.7.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
+    "react-router-dom": "^6.4.5",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.4.2",
+    "uuid": "^9.0.0",
+    "web-vitals": "^2.1.0",
+    "yup": "^0.32.11"
+  },
+  "scripts": {
+    "start": "BROWSER=none PORT=13000 react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      },
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not ie <= 99",
+      "not android <= 4.4.4",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.18.9",
+    "@babel/plugin-proposal-optional-chaining": "^7.18.9",
+    "@storybook/addon-actions": "^6.5.14",
+    "@storybook/addon-essentials": "^6.5.14",
+    "@storybook/addon-interactions": "^6.5.14",
+    "@storybook/addon-links": "^6.5.14",
+    "@storybook/addon-viewport": "^6.5.15",
+    "@storybook/builder-webpack4": "^6.5.14",
+    "@storybook/manager-webpack4": "^6.5.14",
+    "@storybook/node-logger": "^6.5.14",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.5.14",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/chrome": "^0.0.217",
+    "@types/elliptic": "^6.4.14",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/uuid": "^8.3.4",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "customize-cra": "^1.0.0",
+    "jest-webextension-mock": "^3.8.8",
+    "prop-types": "^15.8.1",
+    "react-app-rewire-multiple-entry": "^2.2.3",
+    "react-app-rewired": "^2.2.1",
+    "sass": "^1.56.0"
+  },
+  "proxy": "http://localhost:3001"
+}

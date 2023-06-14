@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -ue
+
+CURR_DIR="${PWD}"
+HOME_DIR="$( basename "$( dirname ${0} )" )"
+ROOT_DIR="${CURR_DIR}/${HOME_DIR}/.."
+
+(
+    # Prisma クライアント生成
+    yarn prisma:generate:client
+
+    # GraphQL スキーマ生成
+    yarn graphql:pipeline
+
+    # GraphQL クライアント生成
+    yarn graphql:generate
+) 2>&1

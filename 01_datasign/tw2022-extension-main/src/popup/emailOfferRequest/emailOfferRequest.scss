@@ -1,0 +1,49 @@
+@import "../../index.scss";
+
+.offer-detail {
+  display: flex;
+  flex-wrap: wrap;
+  //margin: 8px 40px;
+  @extend .text-styles-body5;
+  //flex-direction: column;
+  //height: 32px;
+}
+.offer-detail::after {
+  content: '';
+  width: 100%;
+}
+.offer-detail div:nth-child(odd) {
+  width: 15%;
+}
+.offer-detail div:nth-child(n+3) {
+  order: 1;
+}
+.offer-link {
+  text-align: center;
+  margin: 8px;
+  @extend .text-styles-body5;
+
+}
+.email-input-container {
+  margin-bottom: 24px;
+  justify-content: center;
+}
+.email-input {
+  width: 90%;
+}
+.bunsin-link{
+  display: flex;
+  align-items: center;
+  margin-left: -32px;
+}
+.icon-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #66B148;
+}
+.bunsin-icon-input {
+  width: 16px;
+  height: 16px;
+  margin-left: -20px;
+}

@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: lighten(rgb(173, 216, 230), 10%) !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  monospace;
+}
+
+//@mixin text-styles-shared($weight, $font-size, $line-height, $letter-spacing) {
+//  font-family: Work Sans, serif;
+//  font-style: normal;
+//  font-weight: $weight;
+//  font-size: $font-size;
+//  line-height: $line-height;
+//  /* identical to box height */
+//  letter-spacing: $letter-spacing;
+//}
+@mixin text-styles-shared(
+  $weight,
+  $font-size,
+  $line-height,
+  $letter-spacing,
+  $color: #535353
+) {
+  font-family: Work Sans;
+  color: $color;
+  font-style: normal;
+  font-weight: $weight;
+  font-size: $font-size;
+  line-height: $line-height;
+  /* identical to box height */
+  letter-spacing: $letter-spacing;
+}
+.text-styles-header {
+  @include text-styles-shared(normal, 14px, 32px, normal, white);
+}
+.text-styles-headline1 {
+  @include text-styles-shared(300, 96px, 113px, -1.5px);
+}
+.text-styles-headline4 {
+  @include text-styles-shared(normal, 34px, 40px, 0.25px);
+}
+.text-styles-headline5 {
+  @include text-styles-shared(normal, 24px, 28px, normal);
+}
+.text-styles-headline6 {
+  @include text-styles-shared(500, 20px, 23px, 0.15px);
+}
+.text-styles-subtitle1 {
+  @include text-styles-shared(normal, 16px, 19px, 0.15px);
+}
+.text-styles-body1 {
+  @include text-styles-shared(normal, 16px, 19px, 0.5px);
+}
+.text-styles-body3 {
+  @include text-styles-shared(normal, 9px, 19px, 0.5px);
+}
+.text-styles-button {
+  @include text-styles-shared(500, 14px, 16px, 1.25px);
+}
+.text-styles-caption {
+  @include text-styles-shared(normal, 12px, 14px, 0.4px);
+}
+.text-styles-overline {
+  @include text-styles-shared(normal, 10px, 12px, 1.5px);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  padding: 16px 0;
+}
+
+.page-error-text {
+  @extend .text-styles-body1;
+  color: #ff784e;
+}

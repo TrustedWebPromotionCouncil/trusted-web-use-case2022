@@ -1,0 +1,33 @@
+<%
+  const display = func.selectLocale(metadata.display, 'ja')
+%> 
+<div style="
+  position: relative;
+  max-width: <%= param.maxWidth || '400px' %>;
+  padding: 0.5rem;
+  border: solid 1px #ccc;
+  border-radius: 6px;
+  background-color: <%= func.orDefault(display, 'background_color', '#ffffff') %>; 
+  color: <%= func.orDefault(display, 'text_color', '#444444') %>; "
+>
+  <% if (display.logo) { %>
+  <img src="<%= display.logo.url %>" alt="<%= func.orDefault(display, 'logo.alt_text', 'logo') %>" 
+    width="48" style="position: absolute; right: 12px;">
+  <% } %> 
+
+  <div style="
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 1.2rem; 
+    font-weight: bold;"
+  >
+    <%= func.orDefault(display, 'name', 'No title') %>
+  </div>
+  <div>　</div>
+
+  <% if (!param.isNoDescription) { %> 
+  <div style="font-size: 1rem; margin-top: 1rem;">
+    <%= func.orDefault(display, 'description', 'No description') %>
+  </div>
+  <% } %> 
+</div>

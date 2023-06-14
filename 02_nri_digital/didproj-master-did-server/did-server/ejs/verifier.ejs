@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include('./partials/head', {title: 'VP提示条件一覧'}); %>
+</head>
+<body>
+<div class="kk-sidenav-container" theme="panel">
+<%- include('./partials/menu', {}); %>
+
+<%# コンテンツは下記divの中に記載 %>
+<div class="kk-sidenav-main kk-padding-s">
+  <div class="kk-container kk-padding-s" size-s left>
+    <div class="didp-title kk-margin-right">VP提示条件一覧</div>
+
+    <% for (verifier of verifierList) { %>
+    <div class="kk-accordion kk-margin-top kk-flex" theme="icon">
+      <span class="kk-margin-right-ss material-symbols-outlined">account_balance</span>
+      <span><%= verifier.name %></span>
+    </div>
+    <div class="kk-margin-left-l" grid-col>
+      <% 
+        for (presentation of verifier.presentationDefinitionList) {
+          const definition = JSON.parse(presentation.definitionJson)
+      %>
+      <div class="kk-col6@s kk-col12" cell>
+        <div class="kk-flex"><span class="kk-margin-right-ss material-symbols-outlined">badge</span><%= presentation.name %></div>
+        <a class="didp-linkbox" href="/verifier/presentation/<%= presentation.id %>/vp/">
+          <div style="
+            position: relative;
+            max-width: '400px';
+            padding: 0.5rem;
+            border: solid 1px #ccc;
+            border-radius: 6px;
+            background-color: #ffffff;
+            color: #444444;"
+          >
+            <%= definition.id %>
+          </div>
+        </a>
+      </div>
+      <% } %> 
+    </div>
+    <% } %> 
+
+  </div>
+</div>
+
+<script>
+</script>
+
+</body>
+</html>

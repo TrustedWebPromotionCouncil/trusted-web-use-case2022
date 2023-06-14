@@ -1,0 +1,32 @@
+@import "../../../index";
+
+.no-current-site {
+  display: flex;
+  justify-content: center;
+  @extend .text-styles-headline;
+}
+
+.verified-result-current {
+  .log {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+    padding: 4px 0;
+  }
+  .log-caption {
+    @extend .text-styles-caption;
+    margin-right: 8px;
+    width: 56px;
+  }
+
+  .log-value {
+    display: flex;
+    align-items: center;
+    @extend .text-styles-body1;
+    max-width: 232px;
+    .did {
+      max-width: 200px;
+    }
+  }
+}
+

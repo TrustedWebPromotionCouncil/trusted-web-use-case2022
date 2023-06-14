@@ -1,0 +1,18 @@
+table, td, th {
+    border: 1px #000000 solid;
+}
+
+.isClose {
+    display: none;
+}
+
+.isOpen {
+    display: block;
+}
+
+.errorLabel {
+    color: red;
+}
+.successLabel {
+    color: black;
+}

@@ -1,0 +1,16 @@
+@import "../../../index.scss";
+
+.dwn-setting {
+  display: flex;
+  //justify-content: center;
+  //align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 8px 0;
+  //background-color: #808080;
+}
+.input-endpoint {
+  margin-left: 24px;
+  padding-bottom: 16px;
+}

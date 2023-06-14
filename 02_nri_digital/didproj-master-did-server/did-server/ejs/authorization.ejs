@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include('./partials/head', {title: '認証'}); %>
+</head>
+<body style="background-color: var(--kk-color-dim);">
+
+<%# コンテンツは下記divの中に記載 %>
+<div class="kk-container kk-padding-s" size-ss>
+  <div class="didp-title kk-margin-right">資格情報の発行 - <%= credential.name %></div>
+  <form action="." method="post" >
+    <input name="response_type" type="hidden" value="<%= param.response_type %>">
+    <input name="client_id" type="hidden" value="<%= param.client_id %>">
+    <input name="op_state" type="hidden" value="<%= param.op_state %>">
+    <input name="redirect_uri" type="hidden" value="<%= param.redirect_uri %>">
+    <input name="authorization_details" type="hidden" value="<%= param.authorization_details %>">
+    <input name="code_challenge" type="hidden" value="<%= param.code_challenge %>">
+    <input name="code_challenge_method" type="hidden" value="<%= param.code_challenge_method %>">
+
+    <div class="kk-card kk-shadow kk-margin-top">
+      <div class="kk-card-title">認証</div>
+      <p>
+        認証の為、画面に表示されているPINを入力してください。
+      </p>
+      <div class="kk-message kk-margin-top" theme="error"<% if (!errorMessage) { %>hidden<% } %>  >
+        <%= errorMessage %> 
+      </div>
+      <div class="kk-input-field">
+        <input id="pin" name="pin" class="kk-input" type="text" autocomplete="off" required>
+        <label class="kk-movable-label" for="pin">PIN Code</label>
+      </div>
+      <div center>
+        <button class="kk-button kk-margin-top" type="submit" theme="primary" fit>
+          <span class="material-symbols-outlined kk-margin-right-ss">key</span>認証
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+</script>
+
+</body>
+</html>

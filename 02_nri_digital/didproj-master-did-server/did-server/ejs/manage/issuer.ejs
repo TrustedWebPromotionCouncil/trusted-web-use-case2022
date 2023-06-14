@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include('../partials/head', {title: 'Issuer管理'}); %>
+</head>
+<body>
+<div class="kk-sidenav-container" theme="panel">
+<%- include('../partials/menu', {}); %>
+
+<%# コンテンツは下記divの中に記載 %>
+<div class="kk-sidenav-main kk-padding-s">
+  <div class="kk-container kk-padding-s" size-s left>
+    <div class="didp-title kk-margin-right">Issuer管理</div>
+    <button class="kk-button" type="button" fit onclick="openAddModal();">
+      <span class="material-symbols-outlined kk-margin-right-ss">add_business</span>新規追加
+    </button>
+
+    <%
+      for (const issuer of issuerList) {
+        const didObject = func.createByJsonString(issuer.didObjectJson)
+    %>
+    <div id="<%= issuer.id %>" class="kk-card kk-shadow kk-margin-top">
+      <input name="id" type="hidden" value="<%= issuer.id %>">
+      <input name="name" type="hidden" value="<%= issuer.name %>">
+
+      <div class="kk-card-title"><%= issuer.name %></div>
+      <div class="didp-padac kk-margin-top-ss">
+        <span class="kk-font-bold">ID: </span><%= issuer.id %>
+      </div>
+      <div class="kk-accordion kk-margin-top-ss" theme="icon" closed>
+        <span class="kk-font-bold">DID: </span><%= didObject.didShort %>
+      </div>
+      <div class="didp-padac kk-margin-top-ss">
+        <textarea class="kk-textarea didp-code" rows="7" readonly><%= didObject.didLong %></textarea>
+      </div>
+      <div class="didp-padac kk-margin-top-ss">
+        <span class="kk-font-bold">Published: </span><%= didObject.published %>
+      </div>
+      <div class="kk-accordion kk-margin-top-ss" theme="icon" closed>
+        <span class="kk-font-bold">Keys: </span>(SigningKeyId = <%= didObject.signingKeyId %>)
+      </div>
+      <div class="didp-padac kk-margin-top-ss">
+        <textarea class="kk-textarea didp-code" rows="7" readonly><%= JSON.stringify(didObject.keys,null,2) %></textarea>
+      </div>
+      <div class="didp-padac kk-margin-top-ss">
+        <span class="kk-font-bold">LinkedDomain: </span><%= Boolean(issuer.linkedDomain) %>
+      </div>
+      <div class="didp-padac kk-margin-top-ss">
+        <span class="kk-font-bold">Created: </span><%= issuer.createdAt %>
+      </div>
+
+      <div class="kk-margin-top">
+        <button class="kk-button" type="button" fit onclick="openEditModal('<%= issuer.id %>');">
+          <span class="material-symbols-outlined kk-margin-right-ss">edit</span>編集
+        </button>
+        <a class="kk-button" fit href="/manage/issuer/<%= issuer.id %>/credential/">
+          <span class="material-symbols-outlined kk-margin-right-ss">style</span>Credential
+        </a>
+        <button class="kk-button" type="button" fit onclick="resolveIssuer('<%= issuer.id %>');">
+          <span class="material-symbols-outlined kk-margin-right-ss">find_in_page</span>Resolve
+        </button>
+        <button class="kk-button" type="button" fit onclick="getLinkedDomain('issuer', '<%= issuer.id %>');">
+          <span class="material-symbols-outlined kk-margin-right-ss">domain_verification</span>LinkedDomain
+        </button>
+      </div>
+    </div>
+    <% } %>
+
+    <div class="kk-card kk-shadow kk-margin-top">
+      <div class="kk-accordion kk-margin-top-ss" theme="icon" closed>
+        <span class="kk-font-bold">Well Known DID Configuration: </span>
+      </div>
+      <div class="didp-padac kk-margin-top-ss">
+        <textarea class="kk-textarea didp-code" rows="8" wrap="off" readonly><%= wellKnownDidConfigurationJson %></textarea>
+      </div>
+
+      <div class="kk-margin-top">
+        <a class="kk-button" fit href="/.well-known/did-configuration.json" target="_blank">
+          <span class="material-symbols-outlined kk-margin-right-ss">open_in_new</span>Open
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="edit_modal" class="didp-modal" closed>
+  <div>
+    <div id="modal_inner">
+      <form action="." method="post">
+        <div grid-col>
+          <div class="kk-col12" cell>
+            <div class="kk-input-field">
+              <input name="id" class="kk-input _values" type="text" readonly>
+              <label class="kk-input-label">ID(UUID自動発行)</label>
+            </div>
+          </div>
+          <div class="kk-col12" cell>
+            <div class="kk-input-field">
+              <input name="name" class="kk-input _values" type="text" maxlength="40" required>
+              <label class="kk-input-label">名称</label>
+            </div>
+          </div>
+        </div>
+        <div class="kk-margin-top" grid-col>
+          <div class="kk-col6" cell>
+            <button class="kk-button" theme="secondary" type="button" onclick="closeModal();">
+              <span class="material-symbols-outlined kk-margin-right-ss">close</span>
+              閉じる
+            </button>
+          </div>
+          <div class="kk-col6" cell>
+            <button name="type_save" class="kk-button" theme="primary" type="submit">
+              <span class="material-symbols-outlined kk-margin-right-ss">create</span>
+              保存
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="resolve_modal" class="didp-modal" reverse closed>
+  <div>
+    <div>
+      <div grid-col>
+        <div class="kk-col12" cell>
+          <div class="kk-input-field">
+            <textarea id="resolvelog" class="kk-textarea kk-font-size-s" type="text" rows="20" readonly>
+            </textarea>
+            <label class="kk-input-label">Resolve response</label>
+          </div>
+        </div>
+      </div>
+      <div class="kk-margin-top" grid-col>
+        <div class="kk-col12" cell>
+          <button class="kk-button" theme="secondary" type="button" onclick="location = '.';">
+            <span class="material-symbols-outlined kk-margin-right-ss">done</span>
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="linkeddid_modal" class="didp-modal" reverse closed>
+  <div>
+    <div>
+      <div grid-col>
+        <div class="kk-col12" cell>
+          <div class="kk-input-field">
+            <textarea id="linkeddid" class="kk-textarea kk-font-size-s" type="text" rows="20" readonly>
+            </textarea>
+            <label class="kk-input-label">Domain Linkage Credential</label>
+          </div>
+        </div>
+      </div>
+      <div class="kk-margin-top" grid-col>
+        <div class="kk-col12" cell>
+          <button class="kk-button" theme="secondary" type="button" onclick="location = '.';">
+            <span class="material-symbols-outlined kk-margin-right-ss">done</span>
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openAddModal() {
+    setModalValues('edit_modal');
+    document.getElementById('edit_modal').removeAttribute('closed');
+  }
+  function openEditModal(id) {
+    setModalValues('edit_modal', id);
+    document.getElementById('edit_modal').removeAttribute('closed');
+  }
+  function closeModal() {
+    document.getElementById('edit_modal').setAttribute('closed', '');
+  }
+  async function resolveIssuer(id) {
+    const res = await fetch('/manage/resolve_issuer/' + id + '/');
+    const json = await res.json();
+    document.getElementById('resolvelog').innerHTML = JSON.stringify(json, null, 2);
+    document.getElementById('resolve_modal').removeAttribute('closed');
+  }
+  async function getLinkedDomain(type, id) {
+    const res = await fetch('/manage/linked_domain/issuer/' + id + '/');
+    const json = await res.json();
+    document.getElementById('linkeddid').innerHTML = JSON.stringify(json, null, 2);
+    document.getElementById('linkeddid_modal').removeAttribute('closed');
+  }
+</script>
+
+</body>
+</html>

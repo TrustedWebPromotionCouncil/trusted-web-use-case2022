@@ -1,0 +1,46 @@
+/* Copyright(c) 2015-2018 Toshiba Tec Corporation, All Rights Reserved. */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, body, button {
+  margin: 0;
+  font-size: 3.75vh;
+  color: white;
+  -webkit-user-select: none;
+  cursor: default;
+  background-color: #34353a;
+}
+
+html, body, input, button {
+  font-family: "Migu 1C", Meiryo, sans-serif;
+}
+
+html:lang(zh-CN), body:lang(zh-CN), input:lang(zh-CN), button:lang(zh-CN) {
+  font-family: "Source Han Sans SC", Meiryo, sans-serif;
+}
+
+html:lang(zh-TW), body:lang(zh-TW), input:lang(zh-TW), button:lang(zh-TW) {
+  font-family: "Source Han Sans TC", Meiryo, sans-serif;
+}
+
+html:lang(ar), body:lang(ar), input:lang(ar), button:lang(ar) {
+  font-family: "DejaVu Sans", Meiryo, sans-serif;
+}
+
+.selected, .active {
+  background: #6e25fe !important;
+}
+
+.disabled {
+  color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
+  cursor: default;
+  pointer-events: none;
+}
+
+.hide {
+  display: none !important;
+}
+/*# sourceMappingURL=base.css.map */

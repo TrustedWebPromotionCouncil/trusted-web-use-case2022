@@ -1,0 +1,6 @@
+dist/*
+public/*
+work/*
+*.md
+*.ejs
+tsconfig.json

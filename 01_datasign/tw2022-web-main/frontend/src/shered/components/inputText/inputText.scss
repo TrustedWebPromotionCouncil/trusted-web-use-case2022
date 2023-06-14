@@ -1,0 +1,11 @@
+@import "../../../index";
+
+.input-text {
+}
+.error-text {
+  font-size:12px;
+  color: #FF784E;
+}
+.input-description {
+  @extend .text-styles-body3;
+}

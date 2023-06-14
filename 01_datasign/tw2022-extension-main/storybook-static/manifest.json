@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Career Management Prototype Extension",
+  "description": "Trusted Web Browser Extension.",
+  "version": "0.0.1",
+  "icons": {
+    "72": "logo384.png"
+  },
+  "action": {
+    "default_icon": "logo384.png",
+    "default_popup": "index.html",
+    "default_title": "Open Popup"
+  },
+  "background": {
+    "service_worker": "static/js/background.2e15b7f6.chunk.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["static/js/content.830a0da9.chunk.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": ["activeTab", "scripting", "webNavigation"],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}

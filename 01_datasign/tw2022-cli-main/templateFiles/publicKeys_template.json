@@ -1,0 +1,15 @@
+[
+  {
+    "id": "key-1",
+    "type": "JsonWebKey2020",
+    "publicKeyJwk": {
+      "kty": "EC",
+      "crv": "secp256k1",
+      "x": "wKuJ_upsAM9k73ihgc8XKUO0S7JwaxMPdkFZzhZwXgg",
+      "y": "U24QhurSNpPllprSKBAtpvb_rMJKU7BgfhdTQ88V4V4"
+    },
+    "purposes": [
+      "authentication"
+    ]
+  }
+]

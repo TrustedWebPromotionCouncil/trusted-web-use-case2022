@@ -1,0 +1,151 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./db.sqlite3"
+}
+
+model Issuer {
+  id            String   @id @default(uuid())
+  name          String
+  didObjectJson String
+  optionsJson   String   @default("{}")
+  updatedAt     DateTime @updatedAt
+  createdAt     DateTime @default(now())
+
+  // Relation
+  credentialList Credential[]
+  linkedDomain   IssuerLinkedDomain?
+}
+
+model Credential {
+  id           String   @id @default(uuid())
+  type         String   @unique
+  issuerId     String
+  name         String
+  metadataJson String
+  optionsJson  String   @default("{}")
+  updatedAt    DateTime @updatedAt
+  createdAt    DateTime @default(now())
+
+  // Relation
+  issuer                   Issuer                 @relation(fields: [issuerId], references: [id])
+  verifiableCredentialList VerifiableCredential[]
+  issuanceOnetimeList      IssuanceOnetime[]
+  authorizationCodeList    AuthorizationCode[]
+  AccessTokenList          AccessToken[]
+}
+
+model VerifiableCredential {
+  id                    String   @id @default(uuid())
+  credentialId          String
+  credentialSubjectJson String
+  createdAt             DateTime @default(now())
+
+  // Relation
+  credential                     Credential                   @relation(fields: [credentialId], references: [id])
+  verifiableCredentialStatusList VerifiableCredentialStatus[]
+}
+
+model VerifiableCredentialStatus {
+  id                     Int      @id @default(autoincrement())
+  verifiableCredentialId String
+  status                 String
+  reason                 String
+  createdAt              DateTime @default(now())
+
+  // Relation
+  verifiableCredential VerifiableCredential @relation(fields: [verifiableCredentialId], references: [id])
+}
+
+model IssuanceOnetime {
+  id           String   @id
+  credentialId String
+  pin          String
+  createdAt    DateTime @default(now())
+
+  // Relation
+  credential Credential @relation(fields: [credentialId], references: [id])
+}
+
+model AuthorizationCode {
+  code              String   @id
+  clientId          String
+  codeChallengeJson String?
+  redirectUri       String
+  credentialId      String
+  createdAt         DateTime @default(now())
+
+  // Relation
+  credential Credential @relation(fields: [credentialId], references: [id])
+}
+
+model AccessToken {
+  token        String   @id
+  credentialId String
+  optionsJson  String   @default("{}")
+  createdAt    DateTime @default(now())
+
+  // Relation
+  credential Credential @relation(fields: [credentialId], references: [id])
+}
+
+model Verifier {
+  id            String   @id @default(uuid())
+  name          String
+  didObjectJson String
+  optionsJson   String   @default("{}")
+  updatedAt     DateTime @updatedAt
+  createdAt     DateTime @default(now())
+
+  // Relation
+  presentationDefinitionList PresentationDefinition[]
+  linkedDomain               VerifierLinkedDomain?
+}
+
+model PresentationDefinition {
+  id             String   @id @default(uuid())
+  verifierId     String
+  name           String
+  definitionJson String
+  updatedAt      DateTime @updatedAt
+  createdAt      DateTime @default(now())
+
+  // Relation
+  verifier                   Verifier                 @relation(fields: [verifierId], references: [id])
+  verifiablePresentationList VerifiablePresentation[]
+}
+
+model VerifiablePresentation {
+  id                   String   @id @default(uuid())
+  presentationDefineId String
+  vpJson               String?
+  updatedAt            DateTime @updatedAt
+  createdAt            DateTime @default(now())
+
+  // Relation
+  presentationDefinition PresentationDefinition @relation(fields: [presentationDefineId], references: [id])
+}
+
+model IssuerLinkedDomain {
+  id        String   @id
+  linkedDid String
+  createdAt DateTime @default(now())
+
+  // Relation
+  issuer Issuer @relation(fields: [id], references: [id])
+}
+
+model VerifierLinkedDomain {
+  id        String   @id
+  linkedDid String
+  createdAt DateTime @default(now())
+
+  // Relation
+  verifier Verifier @relation(fields: [id], references: [id])
+}

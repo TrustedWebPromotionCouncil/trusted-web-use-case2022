@@ -1,0 +1,13 @@
+@import "../../../index";
+
+.pass-text {
+  @extend .text-styles-caption;
+  color: var(--bs-success);
+  padding: 4px 0;
+}
+
+.not-pass-text {
+  @extend .text-styles-caption;
+  color: var(--bs-danger);
+  padding: 4px 0;
+}

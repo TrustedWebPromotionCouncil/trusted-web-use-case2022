@@ -1,0 +1,328 @@
+openapi: "3.0.2"
+info:
+  title: TrustedWeb-Corp-Wallet-Backend
+  version: "1.0"
+servers:
+  - url: https://localhost:8080/
+security:
+  - openId: []
+paths:
+  /credentials:
+    get:
+      description: "Credentialのリストを取得します"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object # 型
+                properties:
+                  credentials:
+                    type: object
+                    properties:
+                      "B8D489CD-BF2B-4D6F-A559-711183B558AB":
+                        $ref: "#/components/schemas/StoredVC"
+        "401":
+          description: Unauthenticated Error
+    post:
+      description: "VCをバックエンドに新規保存します。"
+      requestBody:
+        description: "idTokenとVCが必須"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                credential:
+                  $ref: "#/components/schemas/StoredVC"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unauthenticated Error
+  /credentials/{credentialID}:
+    put:
+      description: "バックエンドのVCを更新します。"
+      parameters:
+        - name: credentialID
+          in: path
+          description: "vcのID"
+          required: true
+          schema:
+            $ref: "#/components/schemas/StoredVC/properties/id"
+      requestBody:
+        description: "idTokenとVCが必須"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                credential:
+                  $ref: "#/components/schemas/StoredVC"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unauthenticated Error
+    delete:
+      parameters:
+        - name: credentialID
+          in: path
+          description: "vcのID"
+          required: true
+          schema:
+            $ref: "#/components/schemas/StoredVC/properties/id"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unauthenticated Error
+  /siopRequest:
+    post:
+      description: "ClaimをSIOPします。"
+      requestBody:
+        description: "idTokenとVCが必須"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  description: "ClaimをSIOPします"
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: "James Smith"
+                    software:
+                      type: string
+                      example: "Universal software"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object # 型
+                properties:
+                  token:
+                    $ref: "#/components/schemas/StoredVC/properties/vc"
+        "401":
+          description: Unauthenticated Error
+  /transactions:
+    get:
+      description: "トランザクションを取得します"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transactions"
+    post:
+      description: "トランザクションを新規登録します"
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                transaction:
+                  $ref: "#/components/schemas/Transactions/properties/transactions"
+      responses:
+        "200":
+          description: OK
+  /transactions/{transactionID}:
+    get:
+      description: "トランザクションを取得します"
+      parameters:
+        - name: transactionID
+          in: path
+          description: "トランザクションのID"
+          required: true
+          schema:
+            $ref: "#/components/schemas/Transactions/properties/transactions/properties/transactionID/properties/transactionID"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transactions/properties/transactions/properties/transactionID"
+    put:
+      description: "トランザクションを更新します"
+      parameters:
+        - name: transactionID
+          in: path
+          description: "トランザクションのID"
+          required: true
+          schema:
+            $ref: "#/components/schemas/Transactions/properties/transactions/properties/transactionID/properties/transactionID"
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                transactions:
+                  $ref: "#/components/schemas/Transactions/properties/transactions"
+      responses:
+        "200":
+          description: OK
+    delete:
+      description: "トランザクションを削除します"
+      parameters:
+        - name: transactionID
+          in: path
+          description: "トランザクションのID"
+          required: true
+          schema:
+            $ref: "#/components/schemas/Transactions/properties/transactions/properties/transactionID/properties/transactionID"
+      responses:
+        "200":
+          description: OK
+components:
+  securitySchemes:
+    openId:
+      type: openIdConnect
+      openIdConnectUrl: "https://server.com/.well-known/openid-configuration"
+  schemas:
+    IDToken:
+      type: string
+      example: "eyJraWQi..."
+    StoredVC:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "B8D489CD-BF2B-4D6F-A559-711183B558AB"
+        format:
+          type: string
+          example: "jwt_vc"
+        type:
+          type: array
+          example: ["VerifiableCredential", "DIDCMemberCredential"]
+          items:
+            type: string
+            example: "VerifiableCredential"
+        vc:
+          $ref: "#/components/schemas/VC"
+        manifest:
+          $ref: "#/components/schemas/Manifest"
+        credentialSubject:
+          $ref: "#/components/schemas/credentialSubject"
+        vcHistory:
+          $ref: "#/components/schemas/vcHistory"
+    VC:
+      type: string
+      example: "eyJhbGc..."
+    Manifest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "YjlhODRlYjgtYTg4OC00ZjQxLWJiNzUtNDM0NDdlMzY0ODZhZGlkZGMgbWVtYmVy"
+        display:
+          type: object
+          properties:
+            card:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "DIDDC Member"
+                issuedBy:
+                  type: string
+                  example: "DID Developer Community"
+                backgroundColor:
+                  type: string
+                  example: "#000000"
+                textColor:
+                  type: string
+                  example: "#ffffff"
+                logo:
+                  type: object
+                  properties:
+                    uri:
+                      type: string
+                      example: "https://didwebstorage.blob.core.windows.net/logo/diddc_logo.png"
+                    description:
+                      type: string
+                      example: "DID Devloper Community"
+                input:
+                  type: object
+                  properties:
+                    attestations:
+                      type: object
+                      properties:
+                        idTokens:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              configuration:
+                                type: string
+                                example: "https://self-issued.me"
+                              client_id:
+                                type: string
+                                example: ""
+                              redirect_uri:
+                                type: string
+                                example: ""
+                    credentialIssuer:
+                      type: string
+                      example: "https://beta.did.msidentity.com/v1.0/tenants/<tenant>/verifiableCredentials/issue"
+    credentialSubject:
+      type: object
+    vcHistory:
+      type: array
+      items:
+        type: object
+        properties:
+          timestamp:
+            type: integer
+            example: 1661936337740
+          message:
+            type: string
+            example: "Certificate issued."
+    Transactions:
+      type: object
+      properties:
+        transactions:
+          type: object
+          properties:
+            transactionID:
+              type: object
+              properties:
+                transactionID:
+                  type: string
+                  example: "00000xxx"
+                title:
+                  type: string
+                  example: "富士フイルムビジネスイノベーション（富士ゼロックス） DocuCentre-VI C2271 PFS"
+                maker:
+                  type: string
+                  example: "富士通"
+                industory:
+                  type: string
+                  example: "情報サービス産業協会(JISA)"
+                status:
+                  type: string
+                  example: "完了"
+                updatedAt:
+                  type: string
+                  example: "2021/04/01"
+                credentials:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      credentialID:
+                        type: string
+                        example: "xxxxx-xxxxx-xxxxx"
+                      type:
+                        type: string
+                        example: "Software利用証明書"
